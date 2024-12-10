@@ -2,7 +2,7 @@
 # RedesAI
 
 A Personalized Portfolio
-## Deployment
+## Deployment in Backend
 
 Create a Virtual Environment(Linux):
 
