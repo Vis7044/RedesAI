@@ -11,7 +11,7 @@ from tqdm import tqdm
 plt.style.use('ggplot')
 
 
-df = pd.read_csv('./reviews.csv')
+df = pd.read_csv('C:/Users/singh/OneDrive/Desktop/python/learn/backend/Model/reviews.csv')
 print(df.head(50))
 
 sia = SentimentIntensityAnalyzer()
