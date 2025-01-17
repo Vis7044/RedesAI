@@ -5,16 +5,9 @@ import html
 import re
 from flask_cors import CORS
 from urllib.parse import urlparse, parse_qs
-from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
-import nltk
-import matplotlib.pyplot as plt
-import seaborn as sns
-from nltk.sentiment import SentimentIntensityAnalyzer
-import os
-import io
-import base64
+from predict import load_model, predict_sentiment
 
 stored_comments = {}  # Store the comments of the video
 
@@ -23,8 +16,7 @@ CORS(app)
 # API key for the YouTube Data API v3
 api_key = 'AIzaSyAR1pbG-NT53ssivVhzfGxkU2GKR7SLCXQ'
 youtube = build('youtube', 'v3', developerKey=api_key)
-nltk.download('vader_lexicon')
-sia = SentimentIntensityAnalyzer()
+
 
 # Function to clean the text data
 def clean_text(text):
@@ -142,53 +134,43 @@ def analyze_sentiment():
     try:
         # Load CSV into DataFrame
         
-        df = pd.read_csv('./reviews.csv')
-        
-        
-        if 'ReviewText' not in df.columns or 'ReviewID' not in df.columns or 'Likes' not in df.columns:
-            return jsonify({'error': 'CSV file must contain ReviewText, ReviewID, and Likes columns'}), 400
+        model, vectorizer = load_model()
+        df = pd.read_csv("reviews.csv")["ReviewText"].values
+        predictions = predict_sentiment(df, model, vectorizer)
 
-        # Perform sentiment analysis
-        res = {}
-        for _, row in df.iterrows():
-            
-            text = row['ReviewText']
-            iid = row['ReviewID']
-            temp = sia.polarity_scores(text)
-            temp['Likes'] = row['Likes']
-            res[iid] = temp
+        # Print predictions
+        sentiment_totals = {'neutral': 0, 'positive': 0, 'negative': 0}
 
-        # Convert results to DataFrame
-        vader = pd.DataFrame(res).T.reset_index().rename(columns={'index': 'Id'})
+        # Count the sentiments
+        for sentiment in predictions:
+            if sentiment == 'negative':
+                sentiment_totals['negative'] += 1
+            elif sentiment == 'positive':
+                sentiment_totals['positive'] += 1
+            else:
+                sentiment_totals['neutral'] += 1
 
-        # Visualization (optional: save as base64)
-        # fig, axs = plt.subplots(1, 3, figsize=(12, 3))
-        # sns.barplot(data=vader, x='Likes', y='pos', ax=axs[0])
-        # sns.barplot(data=vader, x='Likes', y='neu', ax=axs[1])
-        # sns.barplot(data=vader, x='Likes', y='neg', ax=axs[2])
-        # axs[0].set_title('Positive')
-        # axs[1].set_title('Neutral')
-        # axs[2].set_title('Negative')
-        # plt.tight_layout()
+        # Calculate total number of reviews
+        total_reviews = len(df)
 
-        # Save the plot to a bytes object
-        # img = io.BytesIO()
-        # plt.savefig(img, format='png')
-        # img.seek(0)
-        # plot_url = base64.b64encode(img.getvalue()).decode()
+        # Calculate percentages
+        sentiment_percentages = {
+            'positive': (sentiment_totals['positive'] / total_reviews) * 100,
+            'neutral': (sentiment_totals['neutral'] / total_reviews) * 100,
+            'negative': (sentiment_totals['negative'] / total_reviews) * 100
+        }
 
-        # Prepare pie chart data
-        neu_total = sum(entry['neu'] for entry in res.values())
-        pos_total = sum(entry['pos'] for entry in res.values())
-        neg_total = sum(entry['neg'] for entry in res.values())
+        print(sentiment_percentages)
+
+
         
         return jsonify({
-            'vader_results': vader.to_dict(orient='records'),
+            'message': 'Sentiment analysis completed successfully',
             # 'plot_url': f'data:image/png;base64,{plot_url}',
             'sentiment_totals': {
-                'neutral': neu_total,
-                'positive': pos_total,
-                'negative': neg_total
+                'neutral': sentiment_percentages['neutral'],
+                'positive': sentiment_percentages['positive'],
+                'negative': sentiment_percentages['negative'],
             },
             
         })
