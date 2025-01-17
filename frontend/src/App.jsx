@@ -5,10 +5,12 @@ import './App.css'
 import YouTubeCommentAnalyzer from './YouTubeCommentAnalyzer'
 import Chart from './Chart'
 import Header from './components/Header'
-import {BrowserRouter, Routes, Route} from 'react-router-dom' 
+import {BrowserRouter, Routes, Route, RouterProvider} from 'react-router-dom' 
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import Results from './pages/Results'
+import Feature from './pages/Feature'
+import AboutUs from './components/AboutUs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +29,8 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/analyse" element={<YouTubeCommentAnalyzer />}/>
         <Route path="/results" element={<Results />}/> 
+        <Route path='/features' element={<Feature/>}/>
+        <Route path='/about' element={<AboutUs/>}/> 
       </Routes>
       <Footer/>
       </BrowserRouter>
