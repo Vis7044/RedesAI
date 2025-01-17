@@ -8,11 +8,11 @@ import pandas as pd
 
 if __name__ == "__main__":
     # Step 1: Prepare the data
-    # file_path = "filtered_comments_sentiment_updated.csv"  # Replace with your CSV file
-    # X, y, vectorizer = prepare_data(file_path)
+    file_path = "filtered_comments_sentiment_updated.csv"  # Replace with your CSV file
+    X, y, vectorizer = prepare_data(file_path)
 
-    # # Step 2: Train the model and save the vectorizer
-    # train_model(X, y, vectorizer)  # Pass the vectorizer here
+     # Step 2: Train the model and save the vectorizer
+    train_model(X, y, vectorizer)  # Pass the vectorizer here
 
     # Step 3: Predict sentiment for new comments
     model, vectorizer = load_model()
