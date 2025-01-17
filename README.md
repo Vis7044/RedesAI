@@ -39,7 +39,7 @@ List Installed Packages:
      pip freeze > requirements.txt
 
 ```
-## InstallationInstalling packages & Dependencies:
+## Installing packages & Dependencies:
 
 Install packages from requirements.txt:
 
