@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PacmanLoader from 'react-spinners/PacmanLoader';
-import RotateLoader from 'react-spinners/RotateLoader';
-import ClipLoader from 'react-spinners/ClipLoader';
+import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
+import Analyzer from './assets/analyzer.json';
+import DetailsCard from './components/DetailsCard';
 
 function YouTubeCommentAnalyzer() {
   const [url, setUrl] = useState('');
@@ -12,6 +12,64 @@ function YouTubeCommentAnalyzer() {
   const [loading, setLoading] = useState(false);
   const [sentiment, setSentiment] = useState(null);
   const [color, setColor] = useState('#000000');
+  const [videoId, setVideoId] = useState(null);
+  const [videoData, setVideoData] = useState({
+    title: '',
+    thumbnail: '',
+    channel: '',
+    views: '',
+    likes: '',
+    comments: '',
+  });
+
+
+
+  
+
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${API_KEY}`;
+
+  const extractVideoId = async (url) => {
+    setVideoData({title: '', thumbnail: '', channel: '', views: '', likes: '', comments: ''});
+    try {
+      const id = url.split("v=")[1]?.split("&")[0]; // Safely split and extract
+      setVideoId(id || 'Invalid URL');
+    } catch (error) {
+      console.error("Error extracting video ID:", error);
+      setVideoId('Invalid URL');
+    }
+  };
+
+  
+
+  const fetchVideoData = async () => {
+    if (!url) {
+      setError('URL is required.');
+      return;
+    }
+    
+    await extractVideoId(url);
+    fetch(URL)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.items.length > 0) {
+          const video = data.items[0];
+          console.log(video)
+          setVideoData({
+            title: video.snippet.title, 
+            thumbnail: video.snippet.thumbnails.high.url, 
+            channel: video.snippet.channelTitle, 
+            views: video.statistics.viewCount, 
+            likes: video.statistics.likeCount, 
+            comments: video.statistics.commentCount
+          }); 
+          
+        } else {
+          console.log('No video found with the given ID.');
+        }
+      })
+      .catch((error) => console.error('Error fetching video details:', error));
+  };
 
   // Fetch and store comments
   const handleFetchComments = async () => {
@@ -25,6 +83,8 @@ function YouTubeCommentAnalyzer() {
 
     try {
       // Fetch comments from Flask backend
+
+      fetchVideoData();
       const response = await axios.post('http://localhost:5000/comments', {
         url,
       });
@@ -36,8 +96,14 @@ function YouTubeCommentAnalyzer() {
           'http://localhost:5000/analyze'
         );
         setSentiment(sentimentResponse.data.sentiment_totals); // Assuming this is the structure returned
-        localStorage.setItem('sentiment', JSON.stringify(sentimentResponse.data.sentiment_totals));
-        localStorage.setItem('comments', JSON.stringify(response.data.comments)); 
+        localStorage.setItem(
+          'sentiment',
+          JSON.stringify(sentimentResponse.data.sentiment_totals)
+        );
+        localStorage.setItem(
+          'comments',
+          JSON.stringify(response.data.comments)
+        );
       } else {
         setError('No comments found for this video.');
       }
@@ -57,15 +123,17 @@ function YouTubeCommentAnalyzer() {
     }
   };
 
-
-
-
   // Log sentiment when it changes
-  useEffect(() => {
-    if (sentiment) {
-      console.log('Sentiment data:', sentiment);
-    }
-  }, [sentiment]);
+  
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: Analyzer, // Loaded Lottie data
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   
 
@@ -83,27 +151,41 @@ function YouTubeCommentAnalyzer() {
           placeholder="Enter YouTube video URL"
           className="mt-5  p-2 focus:outline-none rounded-md bg-white shadow w-[700px]"
         />
-        {!loading && <button 
-          onClick={handleFetchComments}
-          className="mt-5 text-lg p-2 bg-black rounded-md ml-6 text-white hover:bg-sky-900"
-        >
-          Analyze Comments
-        </button>}
+        {!loading && (
+          <button
+            onClick={handleFetchComments}
+            className="mt-5 text-lg p-2 bg-black rounded-md ml-6 text-white hover:bg-sky-900"
+          >
+            Analyze Comments
+          </button>
+        )}
         {loading && (
-          <ClipLoader className='mt-6' color={color} loading={loading} size={40} />
+          <div>
+            <Lottie options={defaultOptions} height={100} width={140} />
+            <p className="text-center font-semibold text-gray-800 mt-4 text-xl">
+              Analyzing....
+            </p>
+          </div>
         )}
 
         {error && <p className="text-red-500">{error}</p>}
 
-        {
-          !loading && sentiment && comments && <Link to={'/results'} className='underline text-center hover:text-blue-600 text-xl'>See Result</Link>
-        }
+        {!loading && sentiment && comments && (
+          <Link
+            to={'/results'}
+            className="underline text-center hover:text-blue-600 text-xl"
+          >
+            See Result
+          </Link>
+        )}
       </div>
       <div className="">
-        <h1>hkdfjslkj</h1>
+        {
+          videoData.title && (
+            <DetailsCard videoData={videoData}/>
+          )
+        }
       </div>
-
-      
     </div>
   );
 }
