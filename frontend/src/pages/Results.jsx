@@ -18,7 +18,7 @@ const Results = () => {
 
   return (
     <>
-      <h1 className="text-6xl text-center font-semibold">Sentiment Analysis Results</h1>
+      <h1 className="text-6xl text-center h-[90px] font-semibold">Sentiment Analysis Results</h1>
       <div className="grid grid-cols-3 p-3 mt-4">
         <div className="flex gap-6 justify-center items-end font-semibold flex-col pr-20 pb-16">
           <div className="text-4xl text-green-400">
@@ -42,7 +42,7 @@ const Results = () => {
           <h3 className="mt-8 text-start text-3xl">
             Comments: {comments.length}
           </h3>
-          <div className="mt-8 overflow-y-auto h-[370px] flex flex-col gap-2 text-white">
+          <div className="mt-8 overflow-y-auto overflow-x-hidden h-[370px] flex flex-col gap-2 text-white">
             {comments.map((comment, index) => (
               <div key={index} className="bg-black rounded-md p-3">
                 <p className="text-start ml-3">
