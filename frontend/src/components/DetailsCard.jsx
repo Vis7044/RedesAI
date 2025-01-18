@@ -1,15 +1,24 @@
 import React from 'react';
 
-const DetailsCard = ({videoData}) => {
-    const { title, thumbnail, channel, views, likes, comments } = videoData;
-  return <div>
-    <h1>{channel}</h1>
-    <img src={thumbnail} alt={title} />
-    <p>{title}</p>
-    <p>Views: {views}</p>
-    <p>Total Likes: {likes}</p>
-    <p>Total Comments: {comments}</p>
-  </div>;
+const DetailsCard = ({ videoData }) => {
+  const { title, thumbnail, channel, views, likes, comments } = videoData;
+
+  return (
+    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center space-y-4 max-w-sm mx-auto">
+      <h1 className="text-xl font-semibold text-gray-800">{channel}</h1>
+      <img
+        src={thumbnail}
+        alt={title}
+        className="w-full h-64 object-cover rounded-lg"
+      />
+      <p className="text-lg font-semibold text-gray-900 mt-2">{title}</p>
+      <div className="flex flex-col space-y-2 text-gray-600">
+        <p><strong>Views:</strong> {views}</p>
+        <p><strong>Total Likes:</strong> {likes}</p>
+        <p><strong>Total Comments:</strong> {comments}</p>
+      </div>
+    </div>
+  );
 };
 
 export default DetailsCard;

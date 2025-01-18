@@ -1,8 +1,19 @@
 import React from 'react'
 import CallToAction from '../components/CallToAction'
 import { Link } from 'react-router-dom'
+import Lottie from 'react-lottie';
+import HomeLottie from '../assets/home_lottie1.json'
 
 const Home = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: HomeLottie,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+  
   return (
     <div className=''>
       <section className="bg-gradient-to-r from-blue-50 to-indigo-100 py-20">
@@ -20,13 +31,7 @@ const Home = () => {
         
         </div>
         <div className="md:w-1/2">
-          <img
-            src="/home.jpg"
-            alt="Social Media Analytics Dashboard"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-xl"
-          />
+          <Lottie options={defaultOptions} height={400} width={400}/>
         </div>
         
       </div>
