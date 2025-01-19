@@ -14,6 +14,7 @@ function YouTubeCommentAnalyzer() {
   const [sentiment, setSentiment] = useState(null);
   const [color, setColor] = useState('#000000');
   const [videoId, setVideoId] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null); // Store previous URL to avoid re-fetching
   const [videoData, setVideoData] = useState({
     title: '',
     thumbnail: '',
@@ -98,6 +99,7 @@ function YouTubeCommentAnalyzer() {
         
         localStorage.setItem('sentiment', JSON.stringify(sentimentResponse.data.sentiment_totals));
         localStorage.setItem('comments', JSON.stringify(response.data.comments));
+        setPrevUrl(url);
       } else {
         setError('No comments found for this video.');
       }
@@ -133,9 +135,9 @@ function YouTubeCommentAnalyzer() {
   };
 
   return (
-    <div className="grid grid-cols-3 h-[calc(100vh-375px)]">
-      <div className="flex col-span-2 w-full  flex-col items-center gap-4 bg-[#F8F8F8]">
-        <h2 className="text-5xl text-slate-800 font-bold mt-24">
+    <div className="grid grid-cols-5">
+      <div className="flex md:col-span-3 col-span-5 w-full h-[500px]  md:h-[600px]   flex-col items-center gap-4 bg-[#F8F8F8]">
+        <h2 className="text-4xl lg:text-5xl text-slate-800 pl-6  lg:p-0 font-bold mt-24">
           Start Analyzing YouTube Comments
         </h2>
 
@@ -144,18 +146,19 @@ function YouTubeCommentAnalyzer() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter YouTube video URL"
-          className="mt-5  p-2 focus:outline-none rounded-md bg-white shadow w-[700px]"
+          className="mt-5  p-2 focus:outline-none rounded-md bg-white shadow lg:w-[700px] md:w-[350px] sm:w-[400px] w-[300px]"
         />
         {!loading && (
           <button
             onClick={handleFetchComments}
-            className="mt-5 text-lg p-2 bg-black rounded-md ml-6 text-white hover:bg-sky-900"
+            disabled={url === prevUrl}
+            className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 rounded-md ml-6 text-white hover:bg-sky-900"
           >
             Analyze Comments
           </button>
         )}
         {loading && (
-          <div>
+          <div className=''>
             <Lottie options={defaultOptions} height={100} width={140} />
             <p className="text-center font-semibold text-gray-800 mt-4 text-xl">
               Analyzing....
@@ -174,7 +177,7 @@ function YouTubeCommentAnalyzer() {
           </Link>
         )}
       </div>
-      <div className="bg-[#eeebeb] pt-6">
+      <div className="bg-[#eeebeb] pt-6 pb-6 hidden md:col-span-2 p-4 md:block">
         {videoData.title==='' && <Lottie options={defaultOptionsbot} height={500} width={440} />}
         {videoData.title && <DetailsCard videoData={videoData} />}
         </div>

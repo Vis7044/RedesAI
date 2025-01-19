@@ -31,7 +31,7 @@ const Home = () => {
         
         </div>
         <div className="md:w-1/2">
-          <Lottie options={defaultOptions} height={400} width={400}/>
+          <Lottie options={defaultOptions} className="h-[400px] w-[400px]"/>
         </div>
         
       </div>
