@@ -14,6 +14,7 @@ function YouTubeCommentAnalyzer() {
   const [sentiment, setSentiment] = useState(null);
   const [color, setColor] = useState("#000000");
   const [videoId, setVideoId] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null); // Store previous URL to avoid re-fetching
   const [videoData, setVideoData] = useState({
     title: "",
     thumbnail: "",
@@ -179,17 +180,19 @@ function YouTubeCommentAnalyzer() {
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter YouTube video URL"
           className="mt-5  p-2 focus:outline-none rounded-md bg-white shadow max-w-xs w-full"
+
         />
         {!loading && (
           <button
             onClick={handleFetchComments}
-            className="mt-5 text-lg p-2 bg-black rounded-md ml-6 text-white hover:bg-sky-900"
+            disabled={url === prevUrl}
+            className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 rounded-md ml-6 text-white hover:bg-sky-900"
           >
             Analyze Comments
           </button>
         )}
         {loading && (
-          <div>
+          <div className=''>
             <Lottie options={defaultOptions} height={100} width={140} />
             <p className="text-center font-semibold text-gray-800 mt-4 text-xl">
               Analyzing....
@@ -218,6 +221,7 @@ function YouTubeCommentAnalyzer() {
             width={size.width}
           />
         )}
+
         {videoData.title && <DetailsCard videoData={videoData} />}
       </div>
     </div>
