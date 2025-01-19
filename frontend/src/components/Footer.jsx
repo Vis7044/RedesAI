@@ -55,12 +55,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
-      <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-        <p>&copy; 2025 RedesAI. All rights reserved.</p>
+
+        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+          <p>&copy; 2025 RedesAI. All rights reserved.</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   );
 };
 
