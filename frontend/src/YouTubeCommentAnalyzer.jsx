@@ -179,20 +179,26 @@ function YouTubeCommentAnalyzer() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter YouTube video URL"
-          className="mt-5  p-2 focus:outline-none rounded-md bg-white shadow max-w-xs w-full"
-
+          className="mt-5  p-3 focus:outline-none rounded-md bg-white shadow max-w-lg w-full"
         />
         {!loading && (
-          <button
-            onClick={handleFetchComments}
-            disabled={url === prevUrl}
-            className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 rounded-md ml-6 text-white hover:bg-sky-900"
-          >
-            Analyze Comments
-          </button>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={handleFetchComments}
+              disabled={url === prevUrl}
+              className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 rounded-md text-white hover:bg-sky-900"
+            >
+              Analyze Comments
+            </button>
+            <a href="https://www.youtube.com/" target="_blank">
+              <button className="mt-5 text-lg p-2 bg-red-600 disabled:bg-slate-600 rounded-md text-white hover:bg-red-700">
+                Open YouTube
+              </button>
+            </a>
+          </div>
         )}
         {loading && (
-          <div className=''>
+          <div className="">
             <Lottie options={defaultOptions} height={100} width={140} />
             <p className="text-center font-semibold text-gray-800 mt-4 text-xl">
               Analyzing....
@@ -213,7 +219,7 @@ function YouTubeCommentAnalyzer() {
       </div>
 
       {/*Lottie section*/}
-      <div className="bg-[#eeebeb] pt-6">
+      <div className="bg-[#eeebeb] p-6">
         {videoData.title === "" && (
           <Lottie
             options={defaultOptionsbot}

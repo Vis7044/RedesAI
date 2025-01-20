@@ -4,7 +4,7 @@ const DetailsCard = ({ videoData }) => {
   const { title, thumbnail, channel, views, likes, comments } = videoData;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center  max-w-[500px] w-full mx-auto mb-3 ">
+    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center  max-w-[550px] w-full mx-auto mb-3">
       <h1 className="text-xl font-semibold text-gray-800">{channel}</h1>
       <img
         src={thumbnail}
