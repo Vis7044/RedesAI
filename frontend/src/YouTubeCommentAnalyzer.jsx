@@ -6,6 +6,8 @@ import Analyzer from "./assets/analyzer.json";
 import Bot from "./assets/bot.json";
 import DetailsCard from "./components/DetailsCard";
 
+import { toast } from "react-toastify";
+
 function YouTubeCommentAnalyzer() {
   const [url, setUrl] = useState("");
   const [comments, setComments] = useState([]);
@@ -106,7 +108,6 @@ function YouTubeCommentAnalyzer() {
     }
 
     setLoading(true);
-    setError(null);
 
     try {
       await extractVideoId(url); // Set videoId from URL
@@ -130,22 +131,24 @@ function YouTubeCommentAnalyzer() {
           "comments",
           JSON.stringify(response.data.comments)
         );
+        toast.success("Comments fetched successfully!");
+        setPrevUrl(url);
       } else {
-        setError("No comments found for this video.");
+        toast.error("No comments found for this video.");
       }
     } catch (err) {
       console.error("Error fetching comments:", err);
       if (err.response) {
-        setError(
-          err.response.data.error || "Failed to fetch comments from server."
-        );
+        
+        toast.error("Failed to fetch comments from server."); 
       } else if (err.request) {
-        setError("Network error. Please check your connection.");
+        toast.error("Network error. Please check your connection.");
       } else {
-        setError("An unexpected error occurred.");
+        toast.error("An unexpected error occurred.");
       }
     } finally {
       setLoading(false);
+      
     }
   };
 
@@ -166,6 +169,7 @@ function YouTubeCommentAnalyzer() {
     },
   };
 
+  console.log(sentiment)
   return (
     <div className="flex flex-col md:flex-row">
       {/*Player input section*/}
@@ -186,7 +190,7 @@ function YouTubeCommentAnalyzer() {
             <button
               onClick={handleFetchComments}
               disabled={url === prevUrl}
-              className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 rounded-md text-white hover:bg-sky-900"
+              className="mt-5 text-lg p-2 bg-black disabled:bg-slate-600 disabled:hover:cursor-not-allowed rounded-md text-white hover:bg-sky-900 "
             >
               Analyze Comments
             </button>
@@ -206,9 +210,7 @@ function YouTubeCommentAnalyzer() {
           </div>
         )}
 
-        {error && <p className="text-red-500">{error}</p>}
-
-        {!loading && sentiment && comments && (
+        {!loading && sentiment &&  (
           <Link
             to={"/results"}
             className="underline text-center hover:text-blue-600 text-xl"

@@ -13,6 +13,7 @@ import Results from './pages/Results'
 import Feature from './pages/Feature'
 import AboutUs from './components/AboutUs'
 import Contact from "./pages/Contact";
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
     <div className="App h-screen">
       <BrowserRouter>
       <Header/> 
+      <ToastContainer/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/analyse" element={<YouTubeCommentAnalyzer />}/>
