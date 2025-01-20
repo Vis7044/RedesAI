@@ -10,7 +10,7 @@ def train_model(X, y, vectorizer, model_path="sentiment_model.pkl", vectorizer_p
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train Logistic Regression model
-    model = LogisticRegression()
+    model = LogisticRegression(multi_class="ovr", max_iter=1000)
     model.fit(X_train, y_train)
 
     # Evaluate the model
