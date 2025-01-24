@@ -12,41 +12,6 @@ nltk.download("stopwords")
 nltk.download("wordnet")
 nltk.download('punkt_tab')
 
-# Initialize lemmatizer
-# lemmatizer = WordNetLemmatizer()
-
-# def preprocess_text_advanced(text):
-#     """Advanced preprocessing: handle emojis, URLs, mentions, stopwords, lemmatization, and punctuation."""
-#     # Convert to lowercase
-#     text = text.lower()
-
-#     # Remove URLs
-#     text = re.sub(r'http\S+|www\S+|https\S+', '', text)
-
-#     # Remove user mentions (e.g., @username)
-#     text = re.sub(r'@\w+', '', text)
-
-#     # Remove emojis (using regex to match emojis)
-#     text = re.sub(r'[^\w\s,]', '', text)  # Remove punctuation and non-word characters (preserve spaces and commas)
-
-#     # Remove any extra spaces
-#     text = re.sub(r'\s+', ' ', text).strip()
-
-#     # Tokenize text
-#     tokens = word_tokenize(text)
-
-#     # Load stopwords
-#     stop_words = set(stopwords.words("english"))
-
-#     # Remove stopwords and keep only alphanumeric words
-#     tokens = [word for word in tokens if word.isalnum() and word not in stop_words]
-
-#     # Lemmatize tokens (reduce to root form)
-#     tokens = [lemmatizer.lemmatize(word) for word in tokens]
-
-#     # Join tokens back into a string
-#     return " ".join(tokens)
-
 
 
 def preprocess_text(text):
