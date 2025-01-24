@@ -37,7 +37,7 @@ const AboutUs = () => {
               <h3 className="text-xl font-semibold mb-2">Sahil Sajar</h3>
               <p className="text-lg text-gray-500">Team Leader</p>
               <p className="mt-4">
-                John is an expert in AI and NLP, leading the charge in building intelligent systems that solve real-world problems.
+                Sahil is an expert in AI and NLP, leading the charge in building intelligent systems that solve real-world problems.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ const AboutUs = () => {
               <h3 className="text-xl font-semibold mb-2">Vishal Bhagat</h3>
               <p className="text-lg text-gray-500">Frontend & Backend</p>
               <p className="mt-4">
-                Jane specializes in machine learning algorithms and data analysis, creating powerful models to extract insights from social media data.
+                Vishal specializes in machine learning algorithms and data analysis, creating powerful models to extract insights from social media data.
               </p>
             </div>
 
@@ -63,7 +63,7 @@ const AboutUs = () => {
               <h3 className="text-xl font-semibold mb-2">Mithalesh</h3>
               <p className="text-lg text-gray-500">Full-Stack Developer</p>
               <p className="mt-4">
-                Alex is the mastermind behind the platform's architecture and user-friendly interface, ensuring that it is both robust and intuitive.
+                Mithalesh is the mastermind behind the platform's architecture and user-friendly interface, ensuring that it is both robust and intuitive.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg">
@@ -72,10 +72,10 @@ const AboutUs = () => {
                 alt="Team Member"
                 className="w-32 h-32 mx-auto mb-4 rounded-full"
               />
-              <h3 className="text-xl font-semibold mb-2">Mukesh</h3>
+              <h3 className="text-xl font-semibold mb-2">Mukesh Prasad Yadav</h3>
               <p className="text-lg text-gray-500">Full-Stack Developer</p>
               <p className="mt-4">
-                Alex is the mastermind behind the platform's architecture and user-friendly interface, ensuring that it is both robust and intuitive.
+                Mukesh is the mastermind behind the platform's architecture and user-friendly interface, ensuring that it is both robust and intuitive.
               </p>
             </div>
           </div>
