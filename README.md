@@ -81,10 +81,10 @@ npm run dev
 ## Screenshots
 
 ## Home Page
-![Home Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20224901.png?raw=true)
+![Home Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Home_Page_ScreenShot.png?raw=true)
 
 ## Analysis Page
-![Analysis Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20230053.png?raw=true)
+![Analysis Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Analysis_page_ScreenShot.png?raw=true)
 
 ## Result Page
-![Result Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20225028.png?raw=true)
+![Result Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Result_page_ScreenShot.png?raw=true)
