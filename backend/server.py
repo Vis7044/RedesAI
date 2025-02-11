@@ -8,13 +8,17 @@ from urllib.parse import urlparse, parse_qs
 import pandas as pd
 import numpy as np
 from predict import load_model, predict_sentiment
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 stored_comments = {}  # Store the comments of the video
 
 app = Flask(__name__)
 CORS(app)
 # API key for the YouTube Data API v3
-api_key = 'AIzaSyAR1pbG-NT53ssivVhzfGxkU2GKR7SLCXQ'
+api_key = os.getenv("SECRET_KEY")
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 
@@ -95,7 +99,7 @@ def get_all_comments(youtube, video_id):
 @app.route('/comments', methods=['POST'])
 def get_url():
     data = request.json
-    print(data)
+    # print(data)
     video_url = data.get('url')
     
     # Extract video ID from URL
@@ -160,7 +164,7 @@ def analyze_sentiment():
             'negative': (sentiment_totals['negative'] / total_reviews) * 100
         }
 
-        print(sentiment_percentages)
+        # print(sentiment_percentages)
 
 
         

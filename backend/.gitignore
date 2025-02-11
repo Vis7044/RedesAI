@@ -3,3 +3,4 @@ myenv
 IMDB-Dataset.csv
 vectorizer.pkl
 sentiment_model.pkl
+.env
