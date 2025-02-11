@@ -1,22 +1,16 @@
 
+
 # RedesAI
 
 
 RedesAI is a lightweight yet powerful sentiment analysis tool designed to evaluate and classify textual data into positive, negative, or neutral sentiments.  RedesAI provides quick and accurate insights to help you better understand your text data.
 
-## Deployment In Backend
-
-
-
-Create a Virtual Environment(Linux):
-
+# How to run project
+   ## Backend
 ```bash
-    python3 -m venv myenv
+    cd backend
 ```
-Activation on venv (Linux):
-```bash
-   source myenv/bin/activate
-```
+## For windows
 
 Create a Virtual Environment (Windows):
 ```bash
@@ -27,19 +21,26 @@ Activation on venv (Windows):
 ```bash
      venv\Scripts\activate
 ```
-(--If Scripts on system is "Restricted"--)
-Set the ExecutionPolicy to allow Scripts:
+
+ If Activation Failed. Execute this command in powershell Administrator mode. : (Optional)
 ```bash
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
-## Packages extraction Command
 
-List Installed Packages:
+## For Linux
+Create a Virtual Environment(Linux):
+
 ```bash
-     pip freeze > requirements.txt
-
+    python3 -m venv myenv
 ```
-## Installing packages & Dependencies:
+Activation on venv (Linux):
+```bash
+   source myenv/bin/activate
+```
+
+## Common for both OS
+
+### Installing packages & Dependencies:
 
 Install packages from requirements.txt:
 
@@ -48,14 +49,42 @@ Install packages from requirements.txt:
 
 ```
     
-## Run Backend
+## First train the model
+
+```bash
+    python initial.py
+```
+## Then Run the server
 
 ```bash
     python server.py
 ```
-## Run Frontend
+## Frontend
 
+```bash
+cd frontend
+```
+ Install packages
+```bash
+npm i
+```
 Run Frontend
 ```bash
 npm run dev
 ```
+
+
+
+# Website Overview
+
+
+## Screenshots
+
+## Home Page
+![Home Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20224901.png?raw=true)
+
+## Analysis Page
+![Analysis Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20230053.png?raw=true)
+
+## Result Page
+![Result Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20225028.png?raw=true)
