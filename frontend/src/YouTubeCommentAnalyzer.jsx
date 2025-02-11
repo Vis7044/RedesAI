@@ -6,9 +6,12 @@ import Analyzer from "./assets/analyzer.json";
 import Bot from "./assets/bot.json";
 import DetailsCard from "./components/DetailsCard";
 
+
 import { toast } from "react-toastify";
 
 function YouTubeCommentAnalyzer() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [url, setUrl] = useState("");
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
@@ -111,7 +114,7 @@ function YouTubeCommentAnalyzer() {
 
     try {
       await extractVideoId(url); // Set videoId from URL
-      const response = await axios.post("http://localhost:5000/comments", {
+      const response = await axios.post(`${apiUrl}/comments`, {
         url,
       });
 
@@ -119,7 +122,7 @@ function YouTubeCommentAnalyzer() {
         setComments(response.data.comments);
 
         const sentimentResponse = await axios.post(
-          "http://localhost:5000/analyze"
+          `${apiUrl}/analyze`
         );
         setSentiment(sentimentResponse.data.sentiment_totals);
 
