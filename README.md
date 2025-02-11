@@ -5,6 +5,22 @@
 
 RedesAI is a lightweight yet powerful sentiment analysis tool designed to evaluate and classify textual data into positive, negative, or neutral sentiments.  RedesAI provides quick and accurate insights to help you better understand your text data.
 
+# Prerequisites for this Project
+Enable Youtube Data Api v3 from google cloud console to get the api key
+
+[[Youtube Api Website]](https://console.cloud.google.com/apis/library/youtube.googleapis.com)
+
+ Or watch tutorial
+
+[[Youtube]](https://www.youtube.com/watch?v=LLAZUTbc97I)
+
+### In backend Create .env file and Include these codes in it 
+```bash
+    FLASK_APP=app.py
+    FLASK_ENV=development
+    SECRET_KEY="Paste your Youtube Api Key Here"
+```
+
 # How to run project
    ## Backend
 ```bash
