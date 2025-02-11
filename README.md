@@ -5,6 +5,22 @@
 
 RedesAI is a lightweight yet powerful sentiment analysis tool designed to evaluate and classify textual data into positive, negative, or neutral sentiments.  RedesAI provides quick and accurate insights to help you better understand your text data.
 
+# Prerequisites for this Project
+Enable Youtube Data Api v3 from google cloud console to get the api key
+
+[[Youtube Api Website]](https://console.cloud.google.com/apis/library/youtube.googleapis.com)
+
+ Or watch tutorial
+
+[[Youtube]](https://www.youtube.com/watch?v=LLAZUTbc97I)
+
+### In backend Create .env file and Include these codes in it 
+```bash
+    FLASK_APP=app.py
+    FLASK_ENV=development
+    SECRET_KEY="Paste your Youtube Api Key Here"
+```
+
 # How to run project
    ## Backend
 ```bash
@@ -81,10 +97,10 @@ npm run dev
 ## Screenshots
 
 ## Home Page
-![Home Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20224901.png?raw=true)
+![Home Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Home_Page_ScreenShot.png?raw=true)
 
 ## Analysis Page
-![Analysis Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20230053.png?raw=true)
+![Analysis Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Analysis_page_ScreenShot.png?raw=true)
 
 ## Result Page
-![Result Page](https://github.com/Vis7044/RedesAI/blob/main/Screenshot%202025-02-11%20225028.png?raw=true)
+![Result Page](https://github.com/Vis7044/RedesAI/blob/main/frontend/public/WebsiteScreenShot/Result_page_ScreenShot.png?raw=true)
