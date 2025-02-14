@@ -96,28 +96,29 @@ def get_all_comments(youtube, video_id):
 
 
 # Function to get the video id from the video url
+def extract_video_id(url):
+    match = re.search(r"(?:v=|\/)([0-9A-Za-z_-]{11})", url)
+    return match.group(1) if match else None
+
 @app.route('/comments', methods=['POST'])
 def get_url():
     data = request.json
-    # print(data)
     video_url = data.get('url')
-    
+
     # Extract video ID from URL
-    try:
-        video_id = video_url.split("v=")[1].split("&")[0]
-    except IndexError:
-        return jsonify({'error': 'No video ID found in the URL'}), 400
+    video_id = extract_video_id(video_url)
     
     if not video_id:
-        return jsonify({'error': 'No video ID found in the URL'}), 400
+        return jsonify({'error': 'No valid video ID found in the URL'}), 400
 
     # Fetch comments
-    comments = get_all_comments(youtube, video_id)  # You should have `youtube` and `get_all_comments` properly defined.
+    comments = get_all_comments(youtube, video_id)  # Ensure `youtube` and `get_all_comments` are defined
+
     if comments is None:
         return jsonify({'error': 'Failed to fetch comments from YouTube'}), 500
 
     # Save comments to CSV
-    csv_file_path = f'reviews.csv'
+    csv_file_path = 'reviews.csv'
 
     try:
         df = pd.DataFrame(comments)
@@ -129,7 +130,6 @@ def get_url():
     return jsonify({
         'message': 'Comments fetched and stored successfully',
         'comments': comments,
-        
     }), 200
 
 
