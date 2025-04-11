@@ -5,7 +5,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-xs">
+    <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-blue-600">
@@ -13,13 +13,13 @@ export default function Header() {
         </Link>
         {/*Mobile view*/}
         <div className="flex gap-5">
-          <button className="md:hidden block bg-white hover:bg-gray-100 py-2 px-3 rounded-sm border">
+          <button className="md:hidden block bg-white hover:bg-gray-100 py-2 px-3 rounded border">
             Sign In
           </button>
 
           {/* Hamburger Icon (visible on mobile) */}
           <button
-            className="md:hidden text-gray-600 focus:outline-hidden"
+            className="md:hidden text-gray-600 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -82,7 +82,7 @@ export default function Header() {
         </nav>
 
         {/* Sign In Button */}
-        <button className="hidden md:block bg-white hover:bg-gray-100 py-2 px-3 rounded-sm border">
+        <button className="hidden md:block bg-white hover:bg-gray-100 py-2 px-3 rounded border">
           Sign In
         </button>
       </div>

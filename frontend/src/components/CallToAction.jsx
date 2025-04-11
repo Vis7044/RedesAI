@@ -14,11 +14,11 @@ const CallToAction = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="grow rounded-lg px-4 py-2 text-sm sm:text-base focus:outline-hidden focus:ring-2 focus:ring-blue-300"
+            className="flex-grow rounded-lg px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <button
             type="submit"
-            className="bg-white hover:bg-gray-100 w-fit mx-auto text-blue-600 py-2 px-4 rounded-sm text-sm sm:text-base"
+            className="bg-white hover:bg-gray-100 w-fit mx-auto text-blue-600 py-2 px-4 rounded text-sm sm:text-base"
           >
             Start Free Trial
           </button>
