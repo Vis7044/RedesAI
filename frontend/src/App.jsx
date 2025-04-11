@@ -14,13 +14,8 @@ import Feature from './pages/Feature'
 import AboutUs from './components/AboutUs'
 import Contact from "./pages/Contact";
 import { ToastContainer } from 'react-toastify'
-import UpiPayment from './pages/UpiPayment'
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const [sentiment, setSentiment] = useState(null);
-  const [comments, setComments] = useState([]);
 
   return (
     <div className="App h-screen">
