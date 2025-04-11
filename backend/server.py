@@ -11,6 +11,8 @@ from predict import load_model, predict_sentiment
 from dotenv import load_dotenv
 import os
 
+from comment_translate import translate_text
+
 load_dotenv()
 
 stored_comments = {}  # Store the comments of the video
@@ -119,7 +121,13 @@ def get_url():
 
     # Save comments to CSV
     csv_file_path = 'reviews.csv'
+    for comment in comments:
+        comment_text = comment['ReviewText']
+        translated_text = translate_text(comment_text)
+        comment['TranslatedText'] = translated_text
+        
 
+    
     try:
         df = pd.DataFrame(comments)
         df.to_csv(csv_file_path, index=False, encoding='utf-8')
@@ -139,9 +147,11 @@ def analyze_sentiment():
         # Load CSV into DataFrame
         
         model, vectorizer = load_model()
-        df = pd.read_csv("reviews.csv")["ReviewText"].values
+        df = pd.read_csv("reviews.csv")["TranslatedText"].values
         predictions = predict_sentiment(df, model, vectorizer)
-
+        
+        for i in range(len(predictions)):
+            print(f'{df[i] } -> {predictions[i]}')
         # Print predictions
         sentiment_totals = {'neutral': 0, 'positive': 0, 'negative': 0}
 

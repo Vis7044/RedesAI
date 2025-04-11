@@ -14,6 +14,7 @@ import Feature from './pages/Feature'
 import AboutUs from './components/AboutUs'
 import Contact from "./pages/Contact";
 import { ToastContainer } from 'react-toastify'
+import UpiPayment from './pages/UpiPayment'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function App() {
         <Route path='/about' element={<AboutUs/>}/> 
           <Route path="/contact" element={<Contact></Contact>}></Route>
       </Routes>
+      
       <Footer/>
       </BrowserRouter>
     </div>
