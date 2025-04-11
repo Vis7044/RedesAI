@@ -14,6 +14,7 @@ import Feature from './pages/Feature'
 import AboutUs from './components/AboutUs'
 import Contact from "./pages/Contact";
 import { ToastContainer } from 'react-toastify'
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/features' element={<Feature/>}/>
         <Route path='/about' element={<AboutUs/>}/> 
           <Route path="/contact" element={<Contact></Contact>}></Route>
+          <Route path='/profile' element={<Profile/>}/>
       </Routes>
       
       <Footer/>
