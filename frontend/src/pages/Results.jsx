@@ -24,17 +24,17 @@ const Results = () => {
       <hr className="w-4/5 mx-auto shadow-xl"></hr>
       <div className="p-3 mt-4">
         {/*Whole chart section*/}
-        <div className="flex flex-col gap-2 md:flex-row md:justify-center w-full max-w-(--breakpoint-lg) mx-auto">
+        <div className="flex flex-col gap-2 md:flex-row md:justify-center w-full max-w-screen-lg mx-auto">
           {/*pnn section*/}
           <div className="flex justify-center">
             <div className="flex flex-wrap gap-5 justify-center md:font-semibold md:flex-col">
-              <div className="text-2xl md:text-4xl text-green-400 w-40 grow md:grow-0 lg:w-fit">
+              <div className="text-2xl md:text-4xl text-green-400 w-40 flex-grow md:flex-grow-0 lg:w-fit">
                 Positive: {positive.toFixed(1)}
               </div>
-              <div className="text-2xl md:text-4xl text-red-500 w-40 grow md:grow-0 lg:w-fit">
+              <div className="text-2xl md:text-4xl text-red-500 w-40 flex-grow md:flex-grow-0 lg:w-fit">
                 Negative: {negative.toFixed(1)}
               </div>
-              <div className="text-2xl md:text-4xl text-gray-600 w-40 grow md:grow-0 lg:w-fit">
+              <div className="text-2xl md:text-4xl text-gray-600 w-40 flex-grow md:flex-grow-0 lg:w-fit">
                 Neutral: {neutral.toFixed(1)}
               </div>
             </div>
@@ -50,7 +50,7 @@ const Results = () => {
         </div>
 
         {/*comment section*/}
-        <div className="w-full mx-auto max-w-(--breakpoint-lg)">
+        <div className="w-full mx-auto max-w-screen-lg">
           <h3 className="mt-8 text-start text-3xl">
             Comments: {comments.length}
           </h3>

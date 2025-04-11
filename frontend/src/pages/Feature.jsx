@@ -5,7 +5,7 @@ const Feature = () => {
   return (
     <div className="bg-gray-50 min-h-screen text-gray-800">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-blue-500 to-teal-500 text-white py-24">
+      <section className="bg-gradient-to-r from-blue-500 to-teal-500 text-white py-24">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Social Media Sentiment Analysis</h1>
           <p className="text-lg mb-8">

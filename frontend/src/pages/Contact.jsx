@@ -12,7 +12,7 @@ const Contact = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          className="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-hidden mb-4"
+          className="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4"
           required
         />
         <button
