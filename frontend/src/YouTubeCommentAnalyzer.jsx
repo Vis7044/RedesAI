@@ -186,7 +186,7 @@ function YouTubeCommentAnalyzer() {
   return (
     <div className="flex flex-col md:flex-row">
       {/*Player input section*/}
-      <div className="flex col-span-2 w-full  flex-col items-center gap-4 bg-[#F8F8F8] pb-3 flex-grow">
+      <div className="flex col-span-2 w-full  flex-col items-center gap-4 bg-[#F8F8F8] pb-3 grow">
         <h2 className="text-center md:text-left text-5xl text-slate-800 font-bold mt-24">
           Start Analyzing YouTube Comments
         </h2>
@@ -196,7 +196,7 @@ function YouTubeCommentAnalyzer() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter YouTube video URL"
-          className="mt-5  p-3 focus:outline-none rounded-md bg-white shadow max-w-lg w-full"
+          className="mt-5  p-3 focus:outline-hidden rounded-md bg-white shadow-sm max-w-lg w-full"
         />
         {!loading && (
           <div className="flex gap-4 justify-center">
