@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "RedesAI",
+    "version": "1.0",
+    "description": "Copies the current YouTube video URL and redirects to analysis site.",
+    "permissions": ["tabs", "activeTab", "scripting", "clipboardWrite"],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
