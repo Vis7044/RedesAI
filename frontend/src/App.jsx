@@ -18,9 +18,9 @@ import { ToastContainer } from 'react-toastify'
 function App() {
 
   return (
-    <div className="App h-screen">
+    <div className="App min-h-screen container bg-black mx-auto inter-karla">
       <BrowserRouter>
-      <Header/> 
+      <Header />
       <ToastContainer/>
       <Routes>
         <Route path="/" element={<Home/>}/>

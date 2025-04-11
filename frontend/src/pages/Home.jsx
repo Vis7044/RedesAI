@@ -1,46 +1,32 @@
-import React from "react";
-import CallToAction from "../components/CallToAction";
-import { Link } from "react-router-dom";
-import Lottie from "react-lottie";
-import HomeLottie from "../assets/home_lottie1.json";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import { motion } from 'framer-motion';
+import Threads from '../components/Thread';
 
 const Home = () => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: HomeLottie,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   return (
-    <div className="">
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-100 py-5">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Unlock Insights from Social Media Comments
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Harness the power of AI to analyze, understand, and act on social
-              media engagement.
-            </p>
-            <Link
-              to={"/analyse"}
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-3 px-6 font-semibold text-center max-w-[300px]"
-            >
-              Get Started
-            </Link>
-          </div>
-          <div className="md:w-1/2 w-full flex justify-center items-center">
-            <div className="w-42 h-42 sm:w-60 sm:h-72 md:w-80 md:h-80 lg:h-[400px] lg:w-[400px]">
-              <Lottie options={defaultOptions} />
-            </div>
-          </div>
-        </div>
-      </section>
-      <CallToAction />
+    <div className="h-screen bg-gradient-to-r bg-black bg-cover bg-center flex flex-col justify-between">
+      
+      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+      <div className="">
+        <motion.h1
+          initial={{
+            filter: 'blur(10px)',
+            clipPath: 'inset(0 50% 0 50%)', // Only center part visible
+          }}
+          animate={{
+            filter: 'blur(0px)',
+            clipPath: 'inset(0% 0% 0% 0%)', // Reveal entire text
+          }}
+          transition={{ duration: 1, ease: 'easeInOut', delay: 0.7 }}
+          className="text-5xl md:text-7xl font-bold text-white text-center"
+        >
+          Analyzing YouTube <br /> Comments with AI
+        </motion.h1>
+      </div>
+        <Threads amplitude={2.5} distance={0} enableMouseInteraction={true} />
+      </div>
     </div>
   );
 };
