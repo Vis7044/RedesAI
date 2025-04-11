@@ -1,3 +1,4 @@
+# backend/server.py
 from flask import Flask, request, jsonify
 from googleapiclient.discovery  import build
 from bs4 import BeautifulSoup
