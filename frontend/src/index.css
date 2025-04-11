@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+.inter-karla {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @keyframes scrollGrid {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 100%;
+    }
+  }
+  
+  .bg-grid {
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.219) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.192) 1px, transparent 1px);
+    background-size: 100% 40px, 40px 100%;
+    animation: scrollGrid 27s linear infinite;
+  }
+  
