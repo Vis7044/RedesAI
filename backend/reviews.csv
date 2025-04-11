@@ -1,74 +1,35 @@
-ReviewID,Username,ReviewText,Likes
-1,@BBHOTEL-n1c,Direct and Short. Wonderful Video. Thank you so much,20
-2,@5f970,Thanks,1
-3,@beautybuygen,You are the best! I was so lost. Subscribed!,1
-4,@TheCatD,Thank you could not figure out where what I needed was. This helped solved the puzzle quickly.,1
-5,@breevwhyman2985,SIR.............THANKS    A   LOT    Ben,1
-6,@devatmachattaraj6430,thank you for this video,1
-7,@That0neN00b-2Ez,Wow I have never seen anyone explain something so good and short! Thank you so much!,0
-8,@FreeOnlineChatrooms,Thank you ,0
-9,@sugarmask,"Thank you very much, fast and straightforward",1
-10,@LingDevie-b5f,连接,0
-11,@breevwhyman2985,Thanks,0
-12,@antonioarmani5153,"thanks bro, it worked",0
-13,@SonofChurchill,Great @Bentach you have video on making next step OAuth credentials. Thanks this was easy to follow.,0
-14,@jackschitt7783,"The navigation isn't the same but I found my way through it, thank you! Great video guide! But how in the world is someone that barely knows how to turn a computer on supposed to get their API key?",3
-15,@dazzaofficial3591,Thanks a lot,1
-16,@janekytbe,So much fps  and good microfone ,0
-17,@akhmadsaad2753,Thanks!,0
-18,@gesse_rocha,valeu... mas como coloco minha lista iptv no TubeExplrer?,0
-19,@Двдядчдыдыя,thank u so much,0
-20,@PandaMoolin,i felt like i was in class... wow! that was smooth!,1
-21,@solomon4306,thnks,0
-22,@TechLargeArea,Thanks ,2
-23,@tayjane21,GREAT! Thank you so much!!,0
-24,@DanielAndrewMe,Legend! ,1
-25,@guilhermecorrea5439,Thank you!,1
-26,@Karma-e7b,If I create a project using youtube api and in  my project I show youtube videos and put ads or subscription on website. Or will some copyright come.What if I don't want copyright issue to appear on my website?,1
-27,@DJVerio,Ty pierdolony Turku ten Twój poradnik jest z dupy i retro jak uj :),0
-28,@careyatou,Did what it was supposed to do,1
-29,@isvashahzad9376,Thankyou for this  Appreciated!,1
-30,@kriegsmandot1,Very helpful in @1:40,1
-31,@maty7778,Quite helpful. Thank you!,1
-32,@Fofardas,Like no 540. Thank you so much for your amazing video. Watched alot of videos but yours was the only one that helped me brother. Love from Portugal,4
-33,@Dhruv-od3tc,i have made a project on youtube sentiment analysis and in my github repo i have to write the steps to get the api but instead can i give your link my repo ?,1
-34,@rogue_carlisle6167,is it safe?,1
-35,@mr_random_84,My channel is disappeared please help me with api tool  1.4 million subscribers channel ,0
-36,@joeeey0079,"I installed the fabric on my Ubuntu (I failed to do it on windows).I looked up OpenAI and Youtube credentials, and pasted themwhile doing fabric setup.But when I try to use fabric, I got the error message:“The model ‘gpt-4-turbo-preview’ does not exist or you do not have access to it. invalid request error”Are there multiple API keys for ChatGPT? Or where did I skip something?",0
-37,@AndyZeng-bm5kw,very useful. THANKS A A LOT,2
-38,@Harriet-oo5ws,Thank you very much. This is very straight forward.,0
-39,@yourownazog8069,"uganda? wowThanks for the video, btw",1
-40,@chick328,"how can I get the other two.,you need 3 a api key ,client ID and secret key",0
-41,@oumaimaayachi3164,"How to get the video ids by entering list of channel ids, is that possible ? Or I can only enter one channel id to get the list of video ids?",0
-42,@motivationalmind4096,thanks buddy very helpful video,2
-43,@jithinraj-yp6fj,improve mic or use audio filtering software :),0
-44,@rkboy7628,"hey this is Rahul from India & i would like to say Thanks, because you solved my Youtube API problem. Thank you so much for helping me.",2
-45,@M1945,"Very well done, thank you",1
-46,@BestBling,"This is a good, helpful, very well done video, however, SLOW THE F DOWN my brotha! God Dangit Man! You MUST have heard by now that English spoken by Indians, is: A) Moderately difficult to understand no matter what the speed, tone, or dialect being used. B) Exponentially MORE difficult to understand/keep up with the faster it's spoken!Just SLOW down! You'll get many more likes, which then  becomes more exposure, hence views, hence $$$! SLOW DOWN!Edit: spelling",0
-47,@republicanpartyofindia34718,"Sir .,..iss ko apne YouTube channel per kese set kare.... please solve my problem",0
-48,@Senesa548,Thanks,0
-49,@Crypto_clane,Any charges or limit,1
-50,@RustyRajnoch,thx mate,0
-51,@NanoValorant,Very on point ,0
-52,@thevoiceprogirl,That was ridiculously easy dammit man brilliant!,0
-53,@GameTechTalk,"That was efficient, extremely useful and ultimately solved my problem. Was super happy to hit that thumbs up button, thank you!",1
-54,@john0094,Why is console asking for payment??,0
-55,@sweetdurt2143,thanks,0
-56,@keycat37,情報提供ありがとうございます。,1
-57,@keycat37,情報提供ありがとうございます。,1
-58,@Rkviralmovies,Thanks so much Dear,1
-59,@user-natal04ka,"Thank you, very much!",0
-60,@royalarcadeofficial,Any way to get it without console?,0
-61,@overkill1603,"It says that the project dosent have a billing account to go in the library, and I dont have any payment methods!",0
-62,@simmsimma6437,Thank you man.,1
-63,@TeamRonDi,"worked great, thank you my friend ️",0
-64,@dilyorbek_ideas,thanks bro it worked,2
-65,@ibrarofficial9470,Sir please solve my problem me on google cloud console his say skip to main content or keyboard shortcut why not opne goggle cloud please me opne my ipad 5.1.1 version on YouTube v3 to enable option please help,0
-66,@semihcay83,Thank you so much,0
-67,@utkarshbhatnagar7323,"that's fine but you also have to configure the consent  screen and it is asking for the home page url, domain name and i havent hosted the website yet how am i supposed to fetch data without OAuth key???",1
-68,@somosemitiendo,"HI. I can't use my API number on my blog because the system gives this error: YouTube API ERROR, Go to the Youtube API Console on Google Cloud and remove any restrictions on the API key, Then edit the current page and click on the Update/Save button to re-connect to the YouTube servers to load the videos.The request cannot be completed because you have exceeded your quota.Do you know how to fix this?",0
-69,@Dheena____jagan,Is It for Buisness Purposes?,1
-70,@marcpovell6061,"Hiya my Friend, you ask US for ideas on future video guides, well heres a MASSIVE one, as no body seems to give that Clear Version, they just talk about it but never show us. How about you show us your process from start to finish, the whole process of ""Handing off your site to a client""Even down to the ""Final"" configurations of the working site, there you wanted a challenge :)I dare you...",0
-71,@competativesolutions4172,is it free ?,1
-72,@256_BP,Your my best teacher ,1
-73,@christopheremorut,Wow.thanks so much,1
+ReviewID,Username,ReviewText,Likes,TranslatedText
+1,@geekconvert,There is no  code execution system being implemented here. Neither the solution is being submitted to server which can be handled by most of the people nor the there is a code execution system like judge0 implemented here,0,There is no  code execution system being implemented here. Neither the solution is being submitted to server which can be handled by most of the people nor the there is a code execution system like judge0 implemented here
+2,@oyesaurabh,is he using any api in the video for code execution  ?,0,is he using any api in the video for code execution  ?
+3,@РодионЧаускин,Garcia Matthew Miller George Martin Brenda,0,Garcia Matthew Miller George Martin Brenda
+4,@universalgadgets353,Starting music was epic,0,Starting music was epic
+5,@mushafirvidhata,bhaiya first time coding krne jaa raha hun web dev se start karun ya direct web 3 se start kr sakta hun .......,0,"Brother, I am going to do coding for the first time, should I start from web dev or can I start directly from web 3।।।।।।।"
+7,@threlonmusketeers9371,what a garbage app lmao. makes me think ur cohort is a scam,0,what a garbage app lmao. makes me think ur cohort is a scam
+8,@ashutosh__018,5:26:40,0,5:26:40
+9,@RavindrasonawaneRavindra,Your computer setup par video dalo bhai Or muje aap jeisa web 3. Developer banana hai thank ,0,Your computer setup par video dalo bhai Or muje aap jeisa web 3. Developer banana hai thank 
+10,@Amankhan-cl1dq,You said you will be using next js then you didn't use npx create next@latest instead of using vite and setting up a react project?,0,You said you will be using next js then you didn't use npx create next@latest instead of using vite and setting up a react project?
+11,@soumikhazra80,2:30 I think they are using some kind of udp connection (webrtc) that's why the connection is lagging because in the case of udp it's fast but it's lose some of its data during transmission. Learn from you in the cohort video that's available in YouTube Correct me if I am wrong @harkirat1,0,2:30 I think they are using some kind of udp connection (webrtc) that's why the connection is lagging because in the case of udp it's fast but it's lose some of its data during transmission. Learn from you in the cohort video that's available in YouTube Correct me if I am wrong @harkirat1
+12,@chetanpatil2473,Your typing speed? And which keyboard you are using?,0,Your typing speed? And which keyboard you are using?
+13,@mathswithvishal5261,vim wal video private kyu kiya bhaiya?,0,"Why did you make the video private, brother?"
+14,@merajansari0773,is video m maine 1hour  patience krna sikh liye,8,is video m maine 1hour  patience krna sikh liye
+15,@edwarda7096,"Hi, is this going to get a sequel?I’m coding a project using monaco-editor, would be very interested in seeing you go through setting up an editor and compiling code",3,"Hi, is this going to get a sequel? I’m coding a project using monaco-editor, would be very interested in seeing you go through setting up an editor and compiling code"
+16,@anilrai9401,Please explain whatever you do,0,Please explain whatever you do
+17,@RPGaming1,How to add the heatmap like leetcode has? Can anybody help me with this?,0,How to add the heatmap like leetcode has? Can anybody help me with this?
+18,@Sky-yy,25:50 empty project,6,25:50 empty project
+19,@sudhanshugautam425,okay so I started following this tutorial in the hope to make leetcode clone but it was really bad decision and somehow still 2:35:00 I managed but now I can only continue if I pay for firebase functions which I can't afford. Really disappointed by you sir as you should understand that we are students and we can't afford to purchase these stuff.,19,okay so I started following this tutorial in the hope to make leetcode clone but it was really bad decision and somehow still 2:35:00 I managed but now I can only continue if I pay for firebase functions which I can't afford. Really disappointed by you sir as you should understand that we are students and we can't afford to purchase these stuff.
+20,@lowLevelCoder99,Assalam O Alaikum Sir!You have 312K subscribers which is good but Inshallah you shall achieve 312M subscribers because your content is too helpful.Thank you Sir.,3,Assalam O Alaikum Sir! You have 312K subscribers which is good but Inshallah you shall achieve 312M subscribers because your content is too helpful. Thank you Sir.
+21,@souvikkarmakar-iw6le,Bhaiya your passphrase is visible :),2,Bhaiya your passphrase is visible :)
+22,@amannautiyal,tailwind < talewind < talwandi sabo,7,Tailwind < Talewind < Talwandi Sabo
+23,@abhikar9090,Thanks,0,Thanks
+24,@utkarshsharma6638,"Deployment link is not working Bhaiya , could you please just re-deploy once and update the link?",3,"Deployment link is not working Bhaiya , could you please just re-deploy once and update the link?"
+25,@arkodeepchatterjee,"hi sir, please make videos on GSOC like how to contribute, how to make proposals, etc etc",0,"hi sir, please make videos on GSOC like how to contribute, how to make proposals, etc etc"
+26,@arkodeepchatterjee,"hello sir please make more videos on GSOC 2024 like how to contribute, how to make proposals, etc etc",1,"hello sir please make more videos on GSOC 2024 like how to contribute, how to make proposals, etc etc"
+27,@shashankshekhar2477,how to get that bounty?,2,how to get that bounty?
+28,@Support-Phalestine,5:26:41 ,2,5:26:41 
+29,@kalkeshwaryamsani9638,Hey why not do video on your computer room setup?,21,Hey why not do video on your computer room setup?
+30,@rajat_ranjan26,"Hi Sir, I am Rajat Ranjan. Working in one of the Big4. I want to take your course i.e., Live 0-100 complete.Will it help me in getting better opportunities and get onsite or Remote jobs.Is DSA is also important along with the course you will be teaching.Thank you#HarkiratSinghSir",2,"Hi Sir, I am Rajat Ranjan. Working in one of the Big4. I want to take your course i.e., Live 0-100 complete. Will it help me in getting better opportunities and get onsite or Remote jobs. Is DSA is also important along with the course you will be teaching. Thank you#HarkiratSinghSir"
+31,@bbharat307,i came to watch zoom call discussions,1,i came to watch zoom call discussions
+32,@bk7159,10:30 AI can't replace hooking things together; lets be a hooker lol,0,10:30 AI can't replace hooking things together; lets be a hooker lol
+33,@harshbansal4602,Ram ram Bhai ji ,6,Ram Ram Bhai Ji 
+34,@omkarharade5807,"this is too good , just like hanging out with Harkirat",23,"this is too good , just like hanging out with Harkirat"
+35,@imbot7901,bhaiya mera iss baar jee mein nhi hoga bhot kharab lagg rha hai bekar college mein hee admission lena parega mera future bekar hogya:(,9,"Brother, this time I will not be able to do it, it feels very bad, I will have to take admission in useless college, my future has been wasted:("
