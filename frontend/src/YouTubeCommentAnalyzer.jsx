@@ -43,6 +43,8 @@ function YouTubeCommentAnalyzer() {
     }
   };
 
+
+
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   // Function to extract video ID from the URL
@@ -154,6 +156,14 @@ function YouTubeCommentAnalyzer() {
       
     }
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const youtubeUrl = params.get("youtubeUrl");
+    if (youtubeUrl) {
+      setUrl(decodeURIComponent(youtubeUrl));
+    }
+  }, [location]);
 
   const defaultOptions = {
     loop: true,
