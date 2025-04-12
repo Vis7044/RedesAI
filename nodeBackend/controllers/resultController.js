@@ -1,3 +1,4 @@
+// nodeBackend/controllers/resultController.js
 const Result = require("../models/resultModel");
 
 // exports.getResult=async(req,res)=>{

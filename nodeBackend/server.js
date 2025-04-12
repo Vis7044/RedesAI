@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./dbConnect/dbConnect");
 const authRoutes = require("./routes/authRoutes");
+const videoRoutes=require("./routes/videoRoutes")
 const cors = require("cors");
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(
   })
 );
 app.use("/api/auth", authRoutes);
+app.use("/api/video",videoRoutes)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
