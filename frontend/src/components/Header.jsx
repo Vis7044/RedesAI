@@ -21,12 +21,12 @@ const items = [
   {
     icon: <GrServices size={18} />,
     label: 'Services',
-    path: '/services',
+    path: '/features',
   },
   {
     icon: <CgProfile size={18} />,
-    label: 'profile',
-    path: '/profile',
+    label: 'Contact',
+    path: '/contact',
   },
 ];
 
