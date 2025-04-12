@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/User");
+const User = require("../models/UserModel");
 require("dotenv").config();
 exports.register = async (req, res) => {
   try {
@@ -56,6 +56,24 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Lax",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      })
+      .status(200)
+      .json({
+        message: "Login successful",
+        token,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+        },
+        success: true,
+      });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
