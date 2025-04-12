@@ -3,7 +3,10 @@ import {motion} from "framer-motion";
 export default function Header() {
 
   return (
-    <motion.div className="flex justify-around items-center p-4 bg-gradient-to-r bg-black h-20 ">
+    <motion.div className="flex justify-around items-center p-4 bg-gradient-to-r h-20 " style={{
+      backgroundImage: 'radial-gradient( #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
+     
+    }}>
       <motion.div 
       initial={{ opacity: 0, y: 40 }} 
       animate={{ opacity: 1, y: 0 }}
