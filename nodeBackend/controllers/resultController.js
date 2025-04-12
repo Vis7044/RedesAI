@@ -52,11 +52,16 @@ exports.addResult = async (req, res) => {
 
 exports.deleteResult = async (req, res) => {
   try {
-    const { videoId } = req.params;
+    const { videoId } = req.body;
     const result = await Result.findOneAndDelete({ videoId });
     if (!result) {
       return res.status(404).json({ message: "Result not found" });
     }
+    const user = await User.findById(req.userId);
+    user.result = user.result.filter(
+      (item) => item.toString() !== result._id.toString()
+    );
+    await user.save();
     res.status(200).json({ message: "Result deleted successfully" });
   } catch (error) {
     console.error(error);
