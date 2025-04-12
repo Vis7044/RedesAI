@@ -23,4 +23,4 @@ const User = mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.models.User || mongoose.model("User", User);

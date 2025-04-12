@@ -1,5 +1,6 @@
 // nodeBackend/controllers/resultController.js
 const Result = require("../models/resultModel");
+const User = require("../models/userModel");
 
 // exports.getResult=async(req,res)=>{
 //     try {
@@ -29,9 +30,20 @@ exports.addResult = async (req, res) => {
       resultStatus,
     });
     await result.save();
-    res
-      .status(201)
-      .json({ message: "Result added successfully", success: true });
+    const video = await Result.findOne({ videoId });
+    if (!video) {
+      return res.status(404).json({ message: "Result not found" });
+    }
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    user.result.push(video._id);
+    await user.save();
+    return res.status(201).json({
+      message: "Result added successfully",
+      video,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
