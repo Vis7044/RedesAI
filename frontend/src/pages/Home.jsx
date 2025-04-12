@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { motion } from 'framer-motion';
 import Threads from '../components/Thread';
@@ -15,6 +15,7 @@ const featureList = [
 ]
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div
       className=""
@@ -85,6 +86,18 @@ const Home = () => {
               channels.
             </GradientText>
           </motion.p>
+          <motion.div
+          initial={{
+            opacity: 0,
+            y: 50,
+          }}
+          animate={{
+            opacity: 1 ,
+            y: 0,
+          }}
+          transition={{ duration: 1, ease: 'easeInOut', delay: 1   }}
+          onClick={() => navigate('/analyse')}
+          >
           <GradientText
             colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
             animationSpeed={3}
@@ -93,6 +106,7 @@ const Home = () => {
           >
             Analyze
           </GradientText>
+          </motion.div>
         </div>
 
         <Threads amplitude={2} distance={0} enableMouseInteraction={true} />
