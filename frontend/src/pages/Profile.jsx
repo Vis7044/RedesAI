@@ -54,7 +54,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white px-6 py-10">
+    <div className="min-h-screen bg-black text-white px-6 py-10">
       <div className="max-w-5xl mx-auto">
         {/* Profile */}
         <UserProfile user={user} />
