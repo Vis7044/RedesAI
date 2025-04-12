@@ -80,3 +80,22 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+exports.getAllResults = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).populate("result");
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+    res.status(200).json({
+      message: "Results fetched successfully",
+      data: user.result,
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
