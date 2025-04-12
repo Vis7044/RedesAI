@@ -1,3 +1,4 @@
+// nodeBackend/models/userModel.js
 const mongoose = require("mongoose");
 
 const User = mongoose.Schema({
