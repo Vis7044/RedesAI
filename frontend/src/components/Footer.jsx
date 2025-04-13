@@ -11,14 +11,12 @@ const navigationLinks = [
 
 const Footer = () => {
   return (
-    <footer className=" text-gray-300 pt-12 pb-8 px-6" style={{
+    <footer className=" text-gray-300 pt-12 pb-8 px-6" 
+    style={{
       backgroundImage:
-        'radial-gradient(circle at center, #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
-      
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-    }}>
+        'radial-gradient( #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
+    }}
+    >
       
       <div className="lg:w-full max-w-7xl lg:mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-y border-gray-700 pt-10 p-5">
         
