@@ -17,7 +17,11 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <div className="App min-h-screen bg-black inter-karla">
+
+    <div className="App min-h-screen container mx-auto inter-karla" style={{
+      backgroundImage:
+        'radial-gradient( #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
+    }}>
       <BrowserRouter>
         <Header />
         <ToastContainer />

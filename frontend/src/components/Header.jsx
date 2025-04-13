@@ -36,6 +36,10 @@ export default function Header() {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
+
+    <motion.div
+      className="flex sm:w-[80%] w-full sm:mx-auto justify-between items-center p-4 pt-20 bg-gradient-to-r h-20 absolute sm:static z-50"
+
       <motion.div
         className="flex justify-around items-center p-4 pt-20 bg-gradient-to-r h-20 absolute sm:static z-50"
         style={{
