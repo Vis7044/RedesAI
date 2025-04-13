@@ -15,6 +15,7 @@ import AboutUs from './components/AboutUs'
 import Contact from "./pages/Contact";
 import { ToastContainer } from 'react-toastify'
 import Profile from './pages/Profile'
+import SmoothScroll from './components/SmoothScroll'
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
       <Header />
       <ToastContainer/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<SmoothScroll><Home/></SmoothScroll>}/>
         <Route path="/analyse" element={<YouTubeCommentAnalyzer />}/>
         <Route path="/results" element={<Results />}/> 
         <Route path='/features' element={<Feature/>}/>

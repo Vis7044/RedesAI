@@ -14,7 +14,9 @@
   }
 
 
-  html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
+  html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: auto; /* disable default smooth scroll */
+    overflow-x: hidden;
+  }
