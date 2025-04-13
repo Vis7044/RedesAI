@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+
     "@studio-freight/lenis": "^1.0.42",
+
+    "aos": "^2.3.4",
+
     "apexcharts": "^4.3.0",
     "axios": "^1.7.7",
     "chart.js": "^4.4.7",
