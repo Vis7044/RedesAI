@@ -145,53 +145,36 @@ def get_url():
 @app.route('/analyze', methods=['POST'])
 def analyze_sentiment():
     try:
-        # Load CSV into DataFrame
-        
         model, vectorizer = load_model()
         df = pd.read_csv("reviews.csv")["TranslatedText"].values
         predictions = predict_sentiment(df, model, vectorizer)
-        
-        for i in range(len(predictions)):
-            print(f'{df[i] } -> {predictions[i]}')
-        # Print predictions
+
         sentiment_totals = {'neutral': 0, 'positive': 0, 'negative': 0}
-
-        # Count the sentiments
         for sentiment in predictions:
-            if sentiment == 'negative':
-                sentiment_totals['negative'] += 1
-            elif sentiment == 'positive':
-                sentiment_totals['positive'] += 1
-            else:
-                sentiment_totals['neutral'] += 1
+            sentiment_totals[sentiment] += 1
 
-        # Calculate total number of reviews
         total_reviews = len(df)
-
-        # Calculate percentages
         sentiment_percentages = {
             'positive': (sentiment_totals['positive'] / total_reviews) * 100,
             'neutral': (sentiment_totals['neutral'] / total_reviews) * 100,
             'negative': (sentiment_totals['negative'] / total_reviews) * 100
         }
 
-        # print(sentiment_percentages)
+        # Pair text with prediction
+        review_sentiments = [
+            {'text': df[i], 'sentiment': predictions[i]}
+            for i in range(len(predictions))
+        ]
 
-
-        
         return jsonify({
             'message': 'Sentiment analysis completed successfully',
-            # 'plot_url': f'data:image/png;base64,{plot_url}',
-            'sentiment_totals': {
-                'neutral': sentiment_percentages['neutral'],
-                'positive': sentiment_percentages['positive'],
-                'negative': sentiment_percentages['negative'],
-            },
-            
+            'sentiment_totals': sentiment_percentages,
+            'results': review_sentiments
         })
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

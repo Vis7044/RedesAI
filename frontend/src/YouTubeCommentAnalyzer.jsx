@@ -133,6 +133,10 @@ function YouTubeCommentAnalyzer() {
           JSON.stringify(sentimentResponse.data.sentiment_totals)
         );
         localStorage.setItem(
+          "translatedCommentsWithSentiment",
+          JSON.stringify(sentimentResponse.data.results)
+        );
+        localStorage.setItem(
           "comments",
           JSON.stringify(response.data.comments)
         );
