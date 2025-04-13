@@ -4,23 +4,26 @@ const DetailsCard = ({ videoData }) => {
   const { title, thumbnail, channel, views, likes, comments } = videoData;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center  max-w-[550px] w-full mx-auto mb-3">
-      <h1 className="text-xl font-semibold text-gray-800">{channel}</h1>
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-2xl p-6 flex flex-col items-center max-w-[550px] w-full mx-auto mb-6 border border-cyan-500/30 backdrop-blur-sm">
+      <h1 className="text-xl font-semibold text-cyan-400 mb-3">{channel}</h1>
+
       <img
         src={thumbnail}
         alt={title}
-        className="w-full h-64 object-cover rounded-lg"
+        className="w-full h-64 object-cover rounded-xl border-2 border-cyan-600/30 shadow-lg"
       />
-      <p className="text-lg font-semibold text-gray-900 mt-2">{title}</p>
-      <div className="flex flex-col space-y-2 text-gray-600">
+
+      <p className="text-lg font-semibold text-white mt-4 text-center px-2">{title}</p>
+
+      <div className="mt-4 w-full text-sm text-gray-300 space-y-1 px-2">
         <p>
-          <strong>Views:</strong> {views}
+          <span className="text-cyan-400 font-semibold">👁️ Views:</span> {views}
         </p>
         <p>
-          <strong>Total Likes:</strong> {likes}
+          <span className="text-cyan-400 font-semibold">👍 Likes:</span> {likes}
         </p>
         <p>
-          <strong>Total Comments:</strong> {comments}
+          <span className="text-cyan-400 font-semibold">💬 Comments:</span> {comments}
         </p>
       </div>
     </div>
