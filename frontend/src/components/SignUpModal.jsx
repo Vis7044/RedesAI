@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import axiosInstance from "../utils/axiosInstance";
 
 const backdrop = {
   visible: { opacity: 1 },
@@ -13,11 +14,35 @@ const modal = {
 
 export default function AuthModal({ showModal, setShowModal }) {
   const [isRegister, setIsRegister] = useState(false);
+  const [user, setUser] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const handleToggle = () => setIsRegister(!isRegister);
+  const handleChange = (e) => {
+    const { name, email, password } = e.target;
+    setFormData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  console.log(formData);
 
-  const handleAuth = async () => {
+  const handleAuth = async (e) => {
     try {
+      e.preventDefault();
+      console.log(formData);
+      if (isRegister) {
+        const res = await axiosInstance.post("/auth/register", formData);
+        if (res.success) {
+          setIsRegister(false);
+        }
+      } else {
+        const res = await axiosInstance.post("/auth/login", formData);
+        console.log(res);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -43,24 +68,30 @@ export default function AuthModal({ showModal, setShowModal }) {
               {isRegister ? "Register" : "Sign In"}
             </h2>
 
-            <form className="space-y-4" onSubmit={handleAuth()}>
+            <form className="space-y-4" onSubmit={handleAuth}>
               {isRegister && (
                 <input
                   type="text"
+                  name="name"
                   placeholder="Username"
                   className="w-full p-2 border border-gray-300 rounded"
+                  onChange={handleChange}
                 />
               )}
 
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="w-full p-2 border border-gray-300 rounded"
+                onChange={handleChange}
               />
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="w-full p-2 border border-gray-300 rounded"
+                onChange={handleChange}
               />
 
               <button
