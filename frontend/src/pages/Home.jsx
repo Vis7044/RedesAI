@@ -133,6 +133,7 @@ const Home = () => {
                 
               <div
                 style={{ width: '100%', height: '200px' ,}}
+                className='relative'
               >
                 <div className="text-white absolute top-0 left-0  z-10">
                   {feature.icon}
