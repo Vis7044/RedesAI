@@ -6,13 +6,26 @@ import Threads from '../components/Thread';
 import GradientText from '../components/GradientText';
 import Particles from '../components/Particles';
 import { IoHomeOutline } from 'react-icons/io5';
-import { icons } from 'lucide-react';
+import SpotlightCard from '../components/SpotlightCard';
 
 const featureList = [
-  {title: 'Sentiment Detection', description: 'Analyze the sentiment of comments.', icon: <IoHomeOutline size={38} />},
-  {title: 'Real-Time Analysis', description: 'Get real-time sentiment analysis and trend insights.', icon: <IoHomeOutline size={38} />},
-  {title: 'Multi-Language Support', description: 'Support for multiple languages to analyze global social media platforms.', icon: <IoHomeOutline size={38} />},
-]
+  {
+    title: 'Sentiment Detection',
+    description: 'Analyze the sentiment of comments.',
+    icon: <IoHomeOutline size={38} />,
+  },
+  {
+    title: 'Real-Time Analysis',
+    description: 'Get real-time sentiment analysis and trend insights.',
+    icon: <IoHomeOutline size={38} />,
+  },
+  {
+    title: 'Multi-Language Support',
+    description:
+      'Support for multiple languages to analyze global social media platforms.',
+    icon: <IoHomeOutline size={38} />,
+  },
+];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -30,7 +43,7 @@ const Home = () => {
     >
       <div
         style={{ width: '100%', height: '500px', position: 'relative' }}
-        className="mt-20"
+        className="mt-40"
       >
         <div className="flex flex-col items-center justify-center ">
           <motion.h1
@@ -87,29 +100,30 @@ const Home = () => {
             </GradientText>
           </motion.p>
           <motion.div
-          initial={{
-            opacity: 0,
-            y: 50,
-          }}
-          animate={{
-            opacity: 1 ,
-            y: 0,
-          }}
-          transition={{ duration: 1, ease: 'easeInOut', delay: 1   }}
-          onClick={() => navigate('/analyse')}
+            initial={{
+              opacity: 0,
+              y: 50,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{ duration: 1, ease: 'easeInOut', delay: 1 }}
+            
+            onClick={() => navigate('/analyse')}
           >
-          <GradientText
-            colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
-            animationSpeed={3}
-            showBorder={true}
-            className="px-3 py-1 mt-2 text-lg"
-          >
-            Analyze
-          </GradientText>
+            <GradientText
+              colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
+              animationSpeed={3}
+              showBorder={true}
+              className="px-3 py-1 mt-2 text-lg"
+            >
+              Analyze
+            </GradientText>
           </motion.div>
         </div>
 
-        <Threads amplitude={2} distance={0} enableMouseInteraction={true}/>
+        <Threads amplitude={2} distance={0} enableMouseInteraction={true} />
       </div>
       {/* cards */}
       <div className="size-18 mt-16 rounded-full bg-radial from-pink-400 from-40% to-fuchsia-700">
@@ -120,46 +134,36 @@ const Home = () => {
           We provide the best YouTube comment analysis service using AI.
         </p>
       </div>
-      <div className="mt-10 mb-10 w-full max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featureList.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1,y: 0   }}
-              transition={{ delay: i * 0.2, duration: 0.6, ease: 'easeOut' }}
-              className="border border-white rounded-xl p-6"
-            >
-                
-              <div
-                style={{ width: '100%', height: '200px' ,}}
-                className='relative'
-              >
-                <div className="text-white absolute top-0 left-0  z-10">
-                  {feature.icon}
-                </div>
-                <Particles
-                  particleColors={['#ffffff', '#ffffff']}
-                  particleCount={200}
-                  particleSpread={10}
-                  speed={0.1}
-                  
-                  particleBaseSize={100}
-                  moveParticlesOnHover={true}
-                  alphaParticles={false}
-                  disableRotation={false}
-                />
-              </div>
-              
-              <h2 className="text-xl font-semibold text-white relative z-10">
-              {feature.title}
-              </h2>
-              <p className="text-gray-300 mt-2 relative z-10">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+    
+      <div className="grid grid-cols-1 text-white md:grid-cols-3 gap-6 mt-10 mb-10 w-full max-w-6xl mx-auto px-4">
+        <SpotlightCard
+          className="custom-spotlight-card"
+          spotlightColor="rgba(0, 229, 255, 0.2)"
+        >
+          <h1 className='text-xl uppercase font-bold'>Sentiment Detection</h1>
+          <p className='text-sm'>
+            Accurately detect the sentiment behind social media comments using
+            state-of-the-art NLP techniques.
+          </p>
+        </SpotlightCard>
+        <SpotlightCard
+          className="custom-spotlight-card"
+          spotlightColor="rgba(0, 229, 255, 0.2)"
+        >
+           <h1 className='text-xl uppercase font-bold'>Real-Time Analysis</h1>
+          <p className='text-sm'>
+          Get real-time sentiment analysis and trend insights from recent comments on social media platforms.
+          </p>
+        </SpotlightCard>
+        <SpotlightCard
+          className="custom-spotlight-card"
+          spotlightColor="rgba(0, 229, 255, 0.2)"
+        >
+           <h1 className='text-xl uppercase font-bold'>Multi-Language Support</h1>
+          <p className='text-sm'>
+          Support for multiple languages to analyze global social media platforms and provide sentiment analysis in various languages.
+          </p>
+        </SpotlightCard>
       </div>
     </div>
   );
