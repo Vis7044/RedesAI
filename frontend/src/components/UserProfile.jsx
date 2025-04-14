@@ -1,13 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, User } from 'lucide-react';
-
-const UserProfile = ({ user }) => {
+import React, { useContext } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, User } from "lucide-react";
+import { UserContext } from "../context/UserContextProvider";
+import StarBorder from "./StarBorder";
+const UserProfile = () => {
+  const { user, logOut } = useContext(UserContext);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className="relative overflow-hidden p-8 rounded-3xl shadow-xl ring-1 ring-gray-700 bg-gradient-to-br from-gray-950 via-black to-gray-900"
     >
       {/* Subtle grid pattern overlay */}
@@ -15,7 +17,9 @@ const UserProfile = ({ user }) => {
 
       <div className="relative z-10 space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-4xl font-extrabold text-white tracking-tight">User Profile</h2>
+          <h2 className="text-4xl font-extrabold text-white tracking-tight">
+            {user?.name}
+          </h2>
           <div className="text-xs text-white bg-gray-800/70 px-3 py-1 rounded-full border border-gray-600 shadow-sm">
             Active
           </div>
@@ -26,7 +30,7 @@ const UserProfile = ({ user }) => {
             <User className="text-gray-400 w-6 h-6" />
             <div>
               <p className="text-sm uppercase text-gray-500">Username</p>
-              <p className="text-base font-medium text-white">{user.username}</p>
+              <p className="text-base font-medium text-white">username</p>
             </div>
           </div>
 
@@ -34,7 +38,7 @@ const UserProfile = ({ user }) => {
             <Mail className="text-gray-400 w-6 h-6" />
             <div>
               <p className="text-sm uppercase text-gray-500">Email</p>
-              <p className="text-base font-medium text-white">{user.email}</p>
+              <p className="text-base font-medium text-white">{user?.email}</p>
             </div>
           </div>
 
@@ -42,7 +46,19 @@ const UserProfile = ({ user }) => {
             <Phone className="text-gray-400 w-6 h-6" />
             <div>
               <p className="text-sm uppercase text-gray-500">Phone</p>
-              <p className="text-base font-medium text-white">{user.phone}</p>
+              <p className="text-base font-medium text-white">12345678</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div>
+              <StarBorder
+                as="button"
+                className="custom-class"
+                color="cyan"
+                speed="5s"
+              >
+                <button onClick={logOut}>Logout</button>
+              </StarBorder>
             </div>
           </div>
         </div>

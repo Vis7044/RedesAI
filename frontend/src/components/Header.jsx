@@ -5,9 +5,10 @@ import { IoHomeOutline } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { GrServices } from "react-icons/gr";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Modal from "./SignUpModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/UserContextProvider";
 
 const items = [
   {
@@ -33,10 +34,13 @@ const items = [
 ];
 
 export default function Header() {
+  const { user } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  console.log(user);
+
   return (
     <>
-
       <motion.div
         className="flex justify-around items-center p-4 pt-20 bg-gradient-to-r h-20 absolute sm:static z-50"
         style={{
@@ -77,14 +81,25 @@ export default function Header() {
             color="cyan"
             speed="5s"
           >
-            <button
-              className=""
-              onClick={() => {
-                setShowModal(true);
-              }}
-            >
-              Sign Up
-            </button>
+            {user ? (
+              <button
+                className=""
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Profile
+              </button>
+            ) : (
+              <button
+                className=""
+                onClick={() => {
+                  setShowModal(true);
+                }}
+              >
+                Sign UP
+              </button>
+            )}
           </StarBorder>
         </motion.div>
       </motion.div>

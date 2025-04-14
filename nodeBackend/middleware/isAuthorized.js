@@ -6,17 +6,15 @@ dotenv.config();
 
 const isAuthorized = async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith("Bearer ")) {
-      const token = authHeader.split(" ")[1];
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET); // ✅ corrected line
-      if (decodedToken) {
-        req.userId = decodedToken.id;
-        console.log("Decoded token:", decodedToken);
-        return next();
-      }
+    const token = req.cookies.token; // Get token from cookies
+    if (!token) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized: No token provided" });
     }
-    return res.status(401).json({ message: "Unauthorized: Invalid token" });
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decodedToken.id;
+    next();
   } catch (err) {
     return res.status(401).json({
       message: "Unauthorized: Token verification failed",

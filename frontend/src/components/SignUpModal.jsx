@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axiosInstance from "../utils/axiosInstance";
+import { UserContext } from "../context/UserContextProvider";
 
 const backdrop = {
   visible: { opacity: 1 },
@@ -14,12 +15,13 @@ const modal = {
 
 export default function AuthModal({ showModal, setShowModal }) {
   const [isRegister, setIsRegister] = useState(false);
-  const [user, setUser] = useState({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  const { user, setUser } = useContext(UserContext);
 
   const handleToggle = () => setIsRegister(!isRegister);
   const handleChange = (e) => {
@@ -28,12 +30,10 @@ export default function AuthModal({ showModal, setShowModal }) {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
-  console.log(formData);
 
   const handleAuth = async (e) => {
     try {
       e.preventDefault();
-      console.log(formData);
       if (isRegister) {
         const res = await axiosInstance.post("/auth/register", formData);
         if (res.success) {
@@ -41,7 +41,10 @@ export default function AuthModal({ showModal, setShowModal }) {
         }
       } else {
         const res = await axiosInstance.post("/auth/login", formData);
-        console.log(res);
+        if (res.data.success) {
+          setUser(res.data.user);
+          setShowModal(false);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -76,6 +79,7 @@ export default function AuthModal({ showModal, setShowModal }) {
                   placeholder="Username"
                   className="w-full p-2 border border-gray-300 rounded"
                   onChange={handleChange}
+                  required
                 />
               )}
 
@@ -85,6 +89,7 @@ export default function AuthModal({ showModal, setShowModal }) {
                 placeholder="Email"
                 className="w-full p-2 border border-gray-300 rounded"
                 onChange={handleChange}
+                required
               />
               <input
                 type="password"
@@ -92,6 +97,7 @@ export default function AuthModal({ showModal, setShowModal }) {
                 placeholder="Password"
                 className="w-full p-2 border border-gray-300 rounded"
                 onChange={handleChange}
+                required
               />
 
               <button

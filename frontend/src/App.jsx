@@ -12,11 +12,10 @@ import Results from "./pages/Results";
 import Feature from "./pages/Feature";
 import AboutUs from "./components/AboutUs";
 import Contact from "./pages/Contact";
-
-import { ToastContainer } from 'react-toastify'
-import Profile from './pages/Profile'
-import SmoothScroll from './components/SmoothScroll'
-
+import Protected from "./utils/Protected";
+import { ToastContainer } from "react-toastify";
+import Profile from "./pages/Profile";
+import SmoothScroll from "./components/SmoothScroll";
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
       }}
     >
       <BrowserRouter>
-
         <Header />
         <ToastContainer />
         <Routes>
@@ -39,7 +37,14 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
 
           <Route path="/contact" element={<Contact></Contact>}></Route>
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
         </Routes>
 
         <Footer />
