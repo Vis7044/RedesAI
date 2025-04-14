@@ -136,10 +136,10 @@ const AnimatedList = ({
 
 
   return (
-    <div className={`relative w-full ${className}`}>
+    <div className={`relative w-full  ${className}`}>
       <div
         ref={listRef}
-        className={`max-h-[800px] overflow-y-auto p-4 ${
+        className={`max-h-[800px] overflow-y-auto  p-4 ${
           displayScrollbar
             ? '[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-[#060606] [&::-webkit-scrollbar-thumb]:bg-[#222] [&::-webkit-scrollbar-thumb]:rounded-[4px]'
             : 'scrollbar-hide'
@@ -158,21 +158,21 @@ const AnimatedList = ({
             onMouseEnter={() => setSelectedIndex(index)}
           >
             <div
-              className={`p-4 bg-[#111] rounded-lg ${
-                selectedIndex === index ? 'bg-[#222]' : ''
-              } ${itemClassName}`}
+              style={{
+                backgroundColor: selectedIndex === index ? '#1F2937' : 'transparent',
+              }}
             >
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
-                className="bg-white p-4 rounded-xl shadow-lg border border-gray-200"
+                className=" p-4 rounded-xl shadow-lg border border-gray-200"
               >
-                <p className="text-gray-800 text-sm mb-2">
+                <p className="text-white text-sm mb-2">
                   <strong>Original:</strong> {items[index].ReviewText}
                 </p>
-                <p className="text-gray-600 italic text-sm mb-3">
+                <p className="text-white italic text-sm mb-3">
                   <strong>Translated:</strong> {item.text}
                 </p>
                 <span

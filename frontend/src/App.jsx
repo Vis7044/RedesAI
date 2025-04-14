@@ -21,7 +21,8 @@ import YoutubeSection from "./components/YoutubeSection";
 
 function App() {
   return (
-    <div
+    <SmoothScroll>
+      <div
       className="App min-h-screen inter-karla"
       style={{
         backgroundImage:
@@ -46,6 +47,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
+    </SmoothScroll>
   );
 }
 
