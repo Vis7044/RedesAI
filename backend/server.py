@@ -144,7 +144,6 @@ def get_url():
 
 CHAT_LINE_REGEX = re.compile(r'^(\d{1,2}/\d{1,2}/\d{2}), (\d{1,2}:\d{2}) - ([^:]+): (.+)$')
 
-
 @app.route('/whatsapp/chats', methods=['POST'])
 def upload_whatsapp_chat():
     if 'file' not in request.files:
@@ -173,20 +172,18 @@ def upload_whatsapp_chat():
                 "TranslatedText": translated_text
             })
 
-    csv_file = 'reviews.csv'
-    file_exists = os.path.isfile(csv_file)
-    with open(csv_file, mode='a', newline='', encoding='utf-8') as f:
+    # Overwrite the reviews.csv file instead of appending
+    with open("reviews.csv", mode='w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=["date", "time", "sender", "message", "TranslatedText"])
-        if not file_exists:
-            writer.writeheader()
+        writer.writeheader()
         writer.writerows(messages)
 
     return jsonify({
         "status": "success",
+        "success": True,
+        "message": messages,
         "saved_messages": len(messages),
-        "messages": messages
     })
-
 
 @app.route('/analyze', methods=['POST'])
 def analyze_sentiment():
@@ -211,9 +208,13 @@ def analyze_sentiment():
             for i in range(len(predictions))
         ]
 
+        
+
         return jsonify({
             'message': 'Sentiment analysis completed successfully',
             'sentiment_totals': sentiment_percentages,
+            "success": True,
+            "status": "success",
             'results': review_sentiments
         })
 
