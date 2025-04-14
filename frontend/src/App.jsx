@@ -13,13 +13,17 @@ import Feature from "./pages/Feature";
 import AboutUs from "./components/AboutUs";
 import Contact from "./pages/Contact";
 import Protected from "./utils/Protected";
-import { ToastContainer } from "react-toastify";
-import Profile from "./pages/Profile";
-import SmoothScroll from "./components/SmoothScroll";
+import { ToastContainer } from 'react-toastify'
+import Profile from './pages/Profile'
+import SmoothScroll from './components/SmoothScroll'
+import YoutubeSection from "./components/YoutubeSection";
+import AnalysisPage from "./pages/AnalysisPage";
+
 
 function App() {
   return (
-    <div
+    <SmoothScroll>
+      <div
       className="App min-h-screen inter-karla"
       style={{
         backgroundImage:
@@ -31,7 +35,7 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/analyse" element={<YouTubeCommentAnalyzer />} />
+          <Route path="/analyse" element={<AnalysisPage /> } />
           <Route path="/results" element={<Results />} />
           <Route path="/features" element={<Feature />} />
           <Route path="/about" element={<AboutUs />} />
@@ -45,11 +49,13 @@ function App() {
               </Protected>
             }
           />
+
         </Routes>
 
         <Footer />
       </BrowserRouter>
     </div>
+    </SmoothScroll>
   );
 }
 

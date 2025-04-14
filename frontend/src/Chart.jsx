@@ -13,11 +13,18 @@ const Chart = ({ positive, negative, neutral }) => {
         width: 480,
         type: "pie",
       },
+      legend: {
+        show: true,
+        fontSize: "16px",
+        labels: {
+          colors: "#fff",
+        },
+      },
       labels: ["Positive", "Negative", "Neutral"],
       colors: ["#8ADE80", "#FF4C72", "#4B5563"],
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 768,
           options: {
             chart: {
               width: 350,
@@ -37,7 +44,8 @@ const Chart = ({ positive, negative, neutral }) => {
         options={state.options}
         series={state.series}
         type="pie"
-        width={480}
+        
+        width={580}
       />
     </div>
   );

@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <>
       <motion.div
-        className="flex justify-around items-center p-4 pt-20 bg-gradient-to-r h-20 absolute sm:static z-50"
+        className="flex justify-between sm:justify-around  w-full pb-4 items-center p-4 pt-20 bg-gradient-to-r h-20 absolute sm:static z-50"
         style={{
           backgroundImage:
             "radial-gradient( #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)",

@@ -20,3 +20,11 @@
     scroll-behavior: auto; /* disable default smooth scroll */
     overflow-x: hidden;
   }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
