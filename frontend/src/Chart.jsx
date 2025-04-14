@@ -24,7 +24,7 @@ const Chart = ({ positive, negative, neutral }) => {
       colors: ["#8ADE80", "#FF4C72", "#4B5563"],
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 768,
           options: {
             chart: {
               width: 350,
@@ -45,7 +45,7 @@ const Chart = ({ positive, negative, neutral }) => {
         series={state.series}
         type="pie"
         
-        width={480}
+        width={580}
       />
     </div>
   );
