@@ -3,11 +3,23 @@ import { Youtube } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import DetailsCard from './DetailsCard';
+import axios from "axios";
+import TextLoader from "./TextLoader";
+import HashLoader from "react-spinners/HashLoader";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const YouTubeCard = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   
   const [url, setUrl] = useState("");
   const [videoId, setVideoId] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [sentiment, setSentiment] = useState(null);
+  const [error, setError] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [step, setStep] = useState(0);
   const [videoData, setVideoData] = useState({
       title: "",
       thumbnail: "",
@@ -60,11 +72,71 @@ const YouTubeCard = () => {
       }
     };
 
+    const handleFetchComments = async () => {
+        if (!url) {
+          setError("URL is required.");
+          return;
+        }
+    
+        setLoading(true);
+    
+        try {
+          await extractVideoId(url); // Set videoId from URL
+          const response = await axios.post(`${apiUrl}/comments`, {
+            url,
+          });
+    
+          if (response.data.comments) {
+            setComments(response.data.comments);
+    
+            const sentimentResponse = await axios.post(
+              `${apiUrl}/analyze`
+            );
+            setSentiment(sentimentResponse.data.sentiment_totals);
+    
+            localStorage.setItem(
+              "sentiment",
+              JSON.stringify(sentimentResponse.data.sentiment_totals)
+            );
+            localStorage.setItem(
+              "translatedCommentsWithSentiment",
+              JSON.stringify(sentimentResponse.data.results)
+            );
+            localStorage.setItem(
+              "comments",
+              JSON.stringify(response.data.comments)
+            );
+            toast.success("Comments fetched successfully!");
+            setPrevUrl(url);
+          } else {
+            toast.error("No comments found for this video.");
+          }
+        } catch (err) {
+          console.error("Error fetching comments:", err);
+          if (err.response) {
+            
+            toast.error("Failed to fetch comments from server."); 
+          } else if (err.request) {
+            toast.error("Network error. Please check your connection.");
+          } else {
+            toast.error("An unexpected error occurred.");
+          }
+        } finally {
+          setLoading(false);
+          
+        }
+      };
+
     useEffect(() => {
         if (videoId) {
           fetchVideoData();
         }
       }, [videoId]);
+
+    
+
+    console.log(url);
+    console.log(prevUrl);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 p-4"
@@ -94,13 +166,9 @@ const YouTubeCard = () => {
           </ul>
 
           {/* Form */}
-          <form className="space-y-4 backdrop-blur-md bg-white/10 p-4 rounded-2xl shadow-inner"
-            onSubmit={(e) => {
-              e.preventDefault();
-              fetchVideoData();
-            }}
+          <div className="space-y-4 backdrop-blur-md bg-white/10 p-4 rounded-2xl shadow-inner flex flex-col"
           >
-            <div>
+            <div className='items-start'>
               <label className="block text-sm mb-1">Paste the YouTube video URL</label>
               <input
                 type="url"
@@ -110,13 +178,44 @@ const YouTubeCard = () => {
                 className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 transition-all duration-300 text-white py-2 rounded-md mt-2"
-            >
-              Analyze Now
-            </button>
-          </form>
+            <div className="flex justify-center">
+            {
+              !loading && (
+                <button
+                  type="submit"
+                  onClick={handleFetchComments}
+                  disabled={prevUrl === url}
+                  className={`px-2 py-2 rounded-md text-white transition-all duration-300 ${
+                    prevUrl === url ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-red-600'
+                  }`}
+                >
+                  Analyze Now
+                </button>
+              )
+            }
+              {
+                loading && (
+                  <HashLoader
+                    size={30}
+                    color="#fff"
+                    loading={loading}
+                  />
+                )
+              } 
+              
+            </div>
+          </div>
+          <div className="flex justify-center">
+            {!loading && sentiment && (
+              <Link
+                to="/results"
+                className="mt-4 block text-center text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-yellow-300 to-green-500 animate-pulse"
+              >
+                See Results →
+              </Link>
+            )}
+            <TextLoader loading={loading} />
+        </div>
         </div>
 
         {/* Right: Image / Detail Card */}
