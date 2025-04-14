@@ -94,7 +94,43 @@ exports.getAllResults = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Server error" });
+  }
+};
+
+//Get data with cookie
+exports.userDetails = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found",
+        data: null,
+        success: false,
+      });
+    }
+    return res.status(200).json({
+      message: "Fetched User",
+      data: user,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+//route for log out
+exports.outUser = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "lax",
+    });
+    return res.status(200).json({
+      message: "User Logged out",
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
   }
 };
