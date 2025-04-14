@@ -87,7 +87,7 @@ const Results = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.03 }}
-                  className="p-4 mb-4 border border-slate-600 rounded-lg"
+                  className="p-4 mb-4 border border-slate-600 hover:shadow-md transition-all duration-300 ease-in-out hover:shadow-fuchsia-500 rounded-lg"
                 >
                   <p className="text-white text-sm mb-2">
                     <strong className='text-green-600'>Original:</strong> {comments[index].ReviewText}
@@ -105,6 +105,7 @@ const Results = () => {
                 </motion.div>
               ))}
 
+            <div className='flex justify-between items-center mt-4'>  
             {visibleCount < translatedCommentsWithSentiment.length && (
               <motion.button
                 onClick={handleShowMore}
@@ -115,7 +116,7 @@ const Results = () => {
                 Show More <IoIosArrowDown className="inline-block ml-2" />
               </motion.button>
             )}
-            {visibleCount > translatedCommentsWithSentiment.length && (
+            {visibleCount > 5 && (
               <motion.button
                 onClick={() => setVisibleCount(5)}
                 whileHover={{ scale: 1.05 }}
@@ -125,6 +126,7 @@ const Results = () => {
                 Reset <IoIosArrowUp className="inline-block ml-2" />
               </motion.button>
             )}
+            </div>
           </motion.div>
         );
 
@@ -171,10 +173,10 @@ const Results = () => {
             onClick={() => setActiveTab(tab)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-4 py-2 rounded-lg text-white transition-all duration-300 ${
+            className={`px-4 py-2 rounded-lg text-white hover:shadow-md hover:shadow-cyan-500 transition-all duration-300 ${
               activeTab === tab
                 ? 'bg-green-700 font-bold shadow-lg'
-                : 'bg-gray-700 hover:bg-green-500'
+                : 'bg-gray-700 hover:bg-green-500 '
             }`}
           >
             {tab}
