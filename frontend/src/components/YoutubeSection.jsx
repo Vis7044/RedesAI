@@ -9,7 +9,7 @@ import HashLoader from "react-spinners/HashLoader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const YouTubeCard = () => {
+const YoutubeSection = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
   
   const [url, setUrl] = useState("");
@@ -139,14 +139,14 @@ const YouTubeCard = () => {
     console.log(prevUrl);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-950 p-4"
+    <div className="min-h-screen mt-4 bg-gray-950 p-4"
     style={{
       backgroundImage:
         'radial-gradient(circle at center, #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
     }}
     >
       <motion.div
-        className="w-full max-w-4xl flex flex-col md:flex-row rounded-3xl overflow-hidden border-4 border-cyan-500"
+        className="w-full mx-auto max-w-4xl flex flex-col md:flex-row rounded-3xl overflow-hidden border-4 border-cyan-500"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -241,4 +241,4 @@ const YouTubeCard = () => {
   );
 };
 
-export default YouTubeCard;
+export default YoutubeSection;
