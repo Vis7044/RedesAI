@@ -3,7 +3,6 @@ import YoutubeSection from "../components/YoutubeSection";
 import TwitterSection from "../components/TwitterSection";
 import WhatsappSection from "../components/WhatsappSection";
 
-
 const AnalysisPage = () => {
   const [activeTab, setActiveTab] = useState("youtube");
 
@@ -21,9 +20,10 @@ const AnalysisPage = () => {
   };
 
   return (
-    <div className="w-full mx-auto mt-16">
+    <div className="w-full max-w-6xl px-4 mx-auto"
+    >
       {/* Tab Buttons */}
-      <div className="flex justify-center space-x-4">
+      <div className="flex flex-wrap justify-center gap-3 mb-6 pt-[80px]">
         <button
           onClick={() => setActiveTab("youtube")}
           className={`px-5 py-2 rounded-full text-sm font-semibold transition-all border duration-300 ${

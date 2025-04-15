@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { UploadCloud, Sparkles } from 'lucide-react';
+import { UploadCloud, Sparkles, FileEdit } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaWhatsapp } from "react-icons/fa";
 import axios from 'axios';
+import PolarChart from './PolarChart';
+import HashLoader from 'react-spinners/HashLoader';
+import TextLoader from './TextLoader';
+import { motion } from 'framer-motion';
 
 const WhatsappSection = () => {
   const inputref = React.useRef(null);
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('');
   const [sentimentResult, setSentimentResult] = useState(null);  // Store sentiment analysis result
+  const [loading, setLoading] = useState(false);
+  const [prevFile, setPrevFile] = useState(null);
 
   // Handle file input change
   const handleFileChange = (event) => {
@@ -29,6 +35,7 @@ const WhatsappSection = () => {
       alert('Please select a file to upload');
       return;
     }
+    setLoading(true);
 
     const formData = new FormData();
     formData.append('file', file);
@@ -52,6 +59,7 @@ const WhatsappSection = () => {
 
         if (analyzeData.status === 'success') {
           setSentimentResult(analyzeData); // Save the sentiment analysis result
+          setPrevFile(file); // Save the previous file for comparison
           setStatus('Sentiment analysis completed successfully.');
         } else {
           setStatus(`Error in sentiment analysis: ${analyzeData.error}`);
@@ -62,6 +70,9 @@ const WhatsappSection = () => {
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }
+    finally{
+      setLoading(false);
+    }
   };
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -69,18 +80,14 @@ const WhatsappSection = () => {
 
 
   return (
-    <div className="min-h-screen rounded-3xl shadow-2xl p-8 text-white"
-    style={{
-        backgroundImage:
-          'radial-gradient(circle at center, #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
-      }}
+    <div className="p-8 text-white"
     >
       
       {/* Centered Wrapper with Framing */}
       <div className="max-w-6xl mx-auto">
         
         {/* Row: 3-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           
           {/* Column 1: Header + Instructions */}
           <div className="space-y-6 p-6 border-cyan-500 border-2 rounded-xl shadow-lg" data-aos="fade-down">
@@ -119,28 +126,89 @@ const WhatsappSection = () => {
                 
               />
               {file && (
-                <p className="text-gray-300 mt-4">{file.name}</p>
+                <p className="text-red-500 mt-4">{file.name}</p>
               )}
-
-              <button
-                className="px-6 py-3 bg-cyan-600/50 text-white rounded-full text-sm font-semibold opacity-60 "
-              >
-                Upload Chat (.txt)
-              </button>
+              <span className="text-gray-300 text-sm">
+                File must be a.txt file
+              </span>
             </div>
-            <button  
-                className="px-6 py-3 bg-cyan-600/50 text-white rounded-full text-sm font-semibold opacity-60 "
-                onClick={handleUpload}
-                disabled={!file}
-              >
-                analyze
-              </button>
+            {
+              !loading ? (
+                <button
+                  onClick={handleUpload}
+                  disabled={!file || prevFile === file}
+                  className={`px-2 py-2 rounded-xl text-white transition-all duration-300 ${
+                    file==null || prevFile ===file ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-red-600'
+                  }`}
+                >
+                  Analyze Now
+                </button>
+              ):
+              (
+                <HashLoader
+                  size={30}
+                  color="#fff"
+                  oading={loading}
+                />
+              )
+
+            }
+            
           </div>
           {/* Column 3: Sentiment Results */}
           <div className="flex flex-col justify-center space-y-4 p-6 border-2 border-cyan-400 rounded-xl shadow-lg" data-aos="fade-up">
             <div className="border-gray-700/50 flex flex-col items-center rounded-xl p-6 shadow-inner">
-              <FaWhatsapp size={200} fill="#16a34a" />
-              <h2 className="text-3xl font-semibold text-white drop-shadow-xl">WhatsApp</h2>
+              {
+                !loading && sentimentResult && (
+                  <motion.div
+                      className="flex flex-col items-center"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                    <h2 className="text-xl text-cyan-400 font-semibold">Sentiment Analysis Results:</h2>
+                    <PolarChart
+                    positive={sentimentResult.sentiment_totals.positive}
+                    negative={sentimentResult.sentiment_totals.negative}
+                    />
+
+                    <div className="text-gray-500 text-sm max-h-[200px] overflow-auto scrollbar-hide ">
+                      {
+                        sentimentResult.results.map((result, index) => (
+                          <div key={index} className="mt-4 scrollbar-hide">
+                            <div className="flex flex-row gap-10">
+                              <span className={`w-6 h-6 text-cyan-${result.sentiment === 'positive'? '400' : '500'} fill-current`}>
+                                {result.sentiment === 'positive'? 'Posivtive' : '' }
+                                {result.sentiment === 'negative'? 'Negative' : '' }
+                                {result.sentiment === 'neutral'? 'Neutral' : ''  }
+                              </span>
+                              <p className="text-gray-700 text-sm">
+                                {result.text}
+                              </p>
+                            </div>
+                          </div>
+                        ))
+                      }
+                    </div>
+
+                    
+                    </motion.div>
+                  
+                )
+              }
+              {
+                !loading && sentimentResult==null && (
+                  <div className="flex flex-col items-center justify-center w-full h-full">
+                    <FaWhatsapp size={220} fill='#16a34a' />
+                    <h2 className="text-3xl text-white font-semibold">WhatsApp</h2>
+                  </div>
+                )
+              }
+              {
+                loading && (
+                  <TextLoader loading={loading} />
+                )
+              }
             </div>
           </div>
 
