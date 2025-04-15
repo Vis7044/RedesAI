@@ -52,17 +52,22 @@ exports.addResult = async (req, res) => {
 
 exports.deleteResult = async (req, res) => {
   try {
-    const { videoId } = req.body;
-    const result = await Result.findOneAndDelete({ videoId });
+    console.log(req.body);
+    const { vidId } = req.body;
+    const result = await Result.findOneAndDelete({ _id: vidId });
     if (!result) {
-      return res.status(404).json({ message: "Result not found" });
+      return res
+        .status(400)
+        .json({ message: "Result not found", success: false });
     }
     const user = await User.findById(req.userId);
     user.result = user.result.filter(
       (item) => item.toString() !== result._id.toString()
     );
     await user.save();
-    res.status(200).json({ message: "Result deleted successfully" });
+    res
+      .status(200)
+      .json({ message: "Result deleted successfully", success: true });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -89,6 +94,24 @@ exports.updateResult = async (req, res) => {
     res.status(200).json({ message: "Result updated successfully" });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.addfav = async (req, res) => {
+  try {
+    const { vidId } = req.body;
+    console.log(req.body);
+    console.log(vidId);
+    const video = await Result.findById(vidId);
+    video.favourite = !video.favourite;
+    await video.save();
+    return res.status(200).json({
+      message: "Added to fav",
+      data: video,
+      success: true,
+    });
+  } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
