@@ -139,11 +139,7 @@ const YoutubeSection = () => {
     console.log(prevUrl);
 
   return (
-    <div className="min-h-screen mt-4 bg-gray-950 p-4"
-    style={{
-      backgroundImage:
-        'radial-gradient(circle at center, #091D0E 0%,#0c0c0b 40%,  #0f0f0f 100%)',
-    }}
+    <div className="min-h-screen mt-4 p-4"
     >
       <motion.div
         className="w-full mx-auto max-w-4xl flex flex-col md:flex-row rounded-3xl overflow-hidden border-4 border-cyan-500"
