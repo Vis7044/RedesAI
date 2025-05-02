@@ -133,6 +133,13 @@ const YoutubeSection = () => {
         }
       }, [videoId]);
 
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const youtubeUrl = params.get("youtubeUrl");
+        if (youtubeUrl) {
+          setUrl(decodeURIComponent(youtubeUrl));
+        }
+      }, [location]);
     
 
     console.log(url);
