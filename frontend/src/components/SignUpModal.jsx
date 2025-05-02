@@ -20,20 +20,19 @@ export default function AuthModal({ showModal, setShowModal }) {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const handleToggle = () => setIsRegister(!isRegister);
   const handleChange = (e) => {
-    const { name, email, password } = e.target;
-    setFormData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleAuth = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       if (isRegister) {
         const res = await axiosInstance.post("/auth/register", formData);
         if (res.success) {
@@ -47,7 +46,8 @@ export default function AuthModal({ showModal, setShowModal }) {
         }
       }
     } catch (error) {
-      console.log(error);
+      setError(error.response.data.message);
+      console.error(error);
     }
   };
 
@@ -55,7 +55,7 @@ export default function AuthModal({ showModal, setShowModal }) {
     <AnimatePresence mode="wait">
       {showModal && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex justify-center items-center z-50 px-4"
           variants={backdrop}
           initial="hidden"
           animate="visible"
@@ -63,13 +63,25 @@ export default function AuthModal({ showModal, setShowModal }) {
           onClick={() => setShowModal(false)}
         >
           <motion.div
-            className="bg-white p-8 rounded-xl shadow-lg w-96"
+            className="relative bg-zinc-900 text-white w-full max-w-md p-6 md:p-8 rounded-2xl shadow-2xl border border-zinc-700"
             variants={modal}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-2xl font-semibold mb-4 text-center">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-4 text-zinc-400 hover:text-white text-2xl"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-3xl font-bold mb-6 text-center tracking-wide">
               {isRegister ? "Register" : "Sign In"}
             </h2>
+            {error && (
+              <div className="text-red-400 p-3 rounded-lg mb-4">
+                {error}
+              </div>
+            )}
 
             <form className="space-y-4" onSubmit={handleAuth}>
               {isRegister && (
@@ -77,7 +89,7 @@ export default function AuthModal({ showModal, setShowModal }) {
                   type="text"
                   name="name"
                   placeholder="Username"
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onChange={handleChange}
                   required
                 />
@@ -87,45 +99,39 @@ export default function AuthModal({ showModal, setShowModal }) {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onChange={handleChange}
                 required
               />
+
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onChange={handleChange}
                 required
               />
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-200 text-white font-medium py-3 rounded-lg shadow-md"
               >
                 {isRegister ? "Register" : "Sign In"}
               </button>
             </form>
 
-            <div className="mt-4 text-center text-sm">
+            <div className="mt-6 text-center text-sm text-zinc-400">
               {isRegister
                 ? "Already have an account?"
                 : "Don't have an account?"}
               <button
                 onClick={handleToggle}
-                className="ml-1 text-blue-600 underline"
+                className="ml-1 text-blue-400 hover:text-blue-500 underline transition"
               >
                 {isRegister ? "Sign In" : "Register"}
               </button>
             </div>
-
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-2 right-3 text-gray-500 hover:text-black text-xl"
-            >
-              &times;
-            </button>
           </motion.div>
         </motion.div>
       )}
