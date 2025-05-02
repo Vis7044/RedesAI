@@ -9,6 +9,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Modal from "./SignUpModal";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContextProvider";
+import { User } from "lucide-react";
 
 const items = [
   {
@@ -56,7 +57,7 @@ export default function Header() {
           transition={{ duration: 0.5 }}
           className="text-2xl bg-black text-white font-bold cursor-pointer"
         >
-          Logo
+          RedesAI
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0,y: 40 }}
@@ -82,24 +83,27 @@ export default function Header() {
             className="custom-class"
             color="cyan"
             speed="5s"
+            
           >
             {user ? (
               <button
-                className=""
+                className="flex items-center gap-2"
                 onClick={() => {
                   navigate("/profile");
                 }}
               >
+                <User className="text-gray-400 w-6 h-6" />
                 Profile
               </button>
             ) : (
               <button
-                className=""
+                className="flex items-center gap-2"
                 onClick={() => {
                   setShowModal(true);
                 }}
               >
-                Sign UP
+                <User className="text-gray-400 w-6 h-6" />
+                Sign In
               </button>
             )}
           </StarBorder>
