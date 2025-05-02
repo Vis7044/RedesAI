@@ -39,6 +39,8 @@ export default function Header() {
   const navigate = useNavigate();
   console.log(user);
 
+  
+
   return (
     <>
       <motion.div
@@ -57,8 +59,8 @@ export default function Header() {
           Logo
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0,y: 40 }}
+          animate={{ opacity: 1, scale: 1,y: 0 }}
           transition={{ duration: 0.5, delay: 1.4 }}
         >
           <Dock
