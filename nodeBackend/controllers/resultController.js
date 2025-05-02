@@ -1,6 +1,10 @@
 // nodeBackend/controllers/resultController.js
 const Result = require("../models/resultModel");
 const User = require("../models/userModel");
+const { GoogleGenAI } = require('@google/genai');
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 // exports.getResult=async(req,res)=>{
 //     try {
@@ -115,3 +119,45 @@ exports.addfav = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+});
+
+
+exports.suggestion = async (req, res) => {
+  const { prompt } = req.body;
+
+  try {
+    const config = {
+      temperature: 1.1,
+      responseMimeType: 'application/json', // Keep text/plain
+    };
+
+    const contents = [
+      {
+        role: 'user',
+        parts: [{ text: prompt }],
+      },
+    ];
+
+    const model = 'gemini-2.0-flash';
+    const response = await ai.models.generateContent({ model, config, contents });
+
+    const generatedText = response.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!generatedText) {
+      throw new Error('No suggestion generated');
+    }
+
+
+    // Try parsing the text as JSON
+    const suggestion = JSON.parse(generatedText);
+
+    res.status(200).json({ suggestion });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to generate suggestion' });
+  }
+};
+

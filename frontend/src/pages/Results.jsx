@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from '../Chart';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
+import Suggestion from '../components/Suggestion';
 const sentimentColors = {
   positive: 'bg-green-100 text-green-700',
   negative: 'bg-red-100 text-red-700',
@@ -19,6 +20,7 @@ const Results = () => {
 
   const sentiment = JSON.parse(localStorage.getItem('sentiment')) || {};
   const comments = JSON.parse(localStorage.getItem('comments')) || [];
+  const [groupedComments, setGroupedComments] = useState({});   
   const translatedCommentsWithSentiment =
     JSON.parse(localStorage.getItem('translatedCommentsWithSentiment')) || [];
 
@@ -27,6 +29,28 @@ const Results = () => {
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 5);
   };
+
+  console.log(comments, 'comments');
+  console.log(translatedCommentsWithSentiment, 'translatedCommentsWithSentiment');  
+
+  // Group comments by sentiment
+ 
+    useEffect(() => {
+      const grouped = { positive: [], negative: [], neutral: [] };
+    translatedCommentsWithSentiment.forEach((item,index) => {
+      if (item.sentiment === 'positive') {
+        grouped.positive.push(comments[index].ReviewText);
+      } else if (item.sentiment === 'negative') {
+        grouped.negative.push(comments[index].ReviewText);
+      } else if (item.sentiment === 'neutral') {
+        grouped.neutral.push(comments[index].ReviewText);
+      }
+    });
+
+    setGroupedComments(grouped);
+    console.log(groupedComments);
+  }, []);
+
 
   const positive = sentiment.positive || 0;
   const negative = sentiment.negative || 0;
@@ -140,7 +164,7 @@ const Results = () => {
             transition={{ duration: 0.5 }}
             className="text-white text-xl min-h-[70vh] text-center mt-6"
           >
-            🚧 Suggestions feature coming soon!
+            <Suggestion groupedComments={groupedComments}/>
           </motion.div>
         );
 
