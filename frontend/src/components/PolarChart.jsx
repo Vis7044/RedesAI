@@ -4,9 +4,9 @@ import ReactApexChart from "react-apexcharts";
 const PolarChart = ({positive, negative}) => {
   const [chartData] = useState({
     series: [
-      positive.toFixed(2),
-      negative.toFixed(2),
-      (100 - (positive + negative)).toFixed(2)
+      positive.toFixed(2)*5,
+      negative.toFixed(2)*5,
+      (100 - (positive + negative)).toFixed(2),
     ],
     options: {
       chart: {
@@ -14,9 +14,18 @@ const PolarChart = ({positive, negative}) => {
         width: 200,
       },
       labels: [
-        "Positive", "Negative", "Neutral"
+        `${positive.toFixed(2)}% Positive`, `${negative.toFixed(2)}% Negative`, `${(100-(positive+negative)).toFixed(2)}% Neutral`
       ],
       colors: ["green", "red", "gray"],
+      tooltip: {
+        y: {
+          formatter: function (value, { seriesIndex }) {
+            if (seriesIndex === 0) return `${positive.toFixed(2)}% Positive`;
+            if (seriesIndex === 1) return `${negative.toFixed(2)}% Negative`;
+            return `${(100 - (positive + negative)).toFixed(2)}% Neutral`;
+          }
+        }
+      },
       stroke: {
         colors: ["#fff"],
       },

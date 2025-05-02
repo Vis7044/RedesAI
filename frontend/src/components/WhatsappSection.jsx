@@ -166,22 +166,22 @@ const WhatsappSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                     >
-                    <h2 className="text-xl text-cyan-400 font-semibold">Sentiment Analysis Results:</h2>
+                    <h2 className="text-lg text-cyan-400 font-semibold">Sentiment Analysis Results: <p className='text-center'>{sentimentResult && sentimentResult.results.length} chats</p></h2>
                     <PolarChart
                     positive={sentimentResult.sentiment_totals.positive}
                     negative={sentimentResult.sentiment_totals.negative}
                     />
 
-                    <div className="text-gray-500 text-sm max-h-[200px] overflow-auto scrollbar-hide ">
+                    <div className="text-gray-500 text-sm max-h-[200px] overflow-y-scroll scrollbar-hide ">
                       {
                         sentimentResult.results.map((result, index) => (
                           <div key={index} className="mt-4 scrollbar-hide">
                             <div className="flex flex-row gap-10">
-                              <span className={`w-6 h-6 text-cyan-${result.sentiment === 'positive'? '400' : '500'} fill-current`}>
-                                {result.sentiment === 'positive'? 'Posivtive' : '' }
-                                {result.sentiment === 'negative'? 'Negative' : '' }
-                                {result.sentiment === 'neutral'? 'Neutral' : ''  }
-                              </span>
+                              
+                                {result.sentiment === 'positive'? <sapn className='text-green-500 '>Positive</sapn> : '' }
+                                {result.sentiment === 'negative'? <sapn className='text-red-500 '>Negetive</sapn> : '' }
+                                {result.sentiment === 'neutral'? <sapn className='text-cyan-500 '>Neutral</sapn> : ''  }
+                              
                               <p className="text-gray-700 text-sm">
                                 {result.text}
                               </p>
