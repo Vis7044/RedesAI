@@ -1,27 +1,48 @@
-date,time,sender,message,TranslatedText
-25/11/23,00:35,Sahil Sajar,Mukesh ko bhi le skte h,Can you also take Mukesh?
-25/11/23,00:35,Vishal~,Haa wo bhi thik rahega,"Yes, that will be fine too."
-25/11/23,01:00,Mithalesh,Confirm krke bol de,Confirm krke bol de
-25/11/23,01:01,Vishal~,Kya confirm karke??,By confirming what??
-25/11/23,01:01,Mithalesh,Fir Rohan idhr fasa kr rkhenge toh fir aage usko v kahi jagah nhi milega,"Then Rohan will keep stuck here, then he will not get any place in the future."
-25/11/23,01:01,Mithalesh,Ki Rohan ko lena hai yaa Mukesh ko,Whether to take Rohan or Mukesh?
-25/11/23,01:01,Vishal~,Tu log bol,You log bowl
-25/11/23,01:02,Mithalesh,Bhai telog bol😂 hm isme kya bole,"Brother, tell😂 me what I said in this."
-25/11/23,01:02,Mithalesh,I'm okay with everything 😂,I'm okay with everything 😂
-25/11/23,01:02,Vishal~,Ruk sahil se puchhta hu,"Wait, I will ask Sahil."
-25/11/23,01:03,Mithalesh,Haan puch lee,Haan puch lee
-25/11/23,01:06,Vishal~,Chal ab group to ban gya ab sirf topic decide karna hai,Chal ab group to ban gya ab sirf topic decide karna hai
-25/11/23,01:07,Vishal~,Mukesh se communication achha hai isliye isko hi add karna sahi rahegs,"Communication with Mukesh is good, so it would be better to add it only."
-25/11/23,01:36,Mithalesh,Kal sham tk confirm krnaa,Kal sham tk confirm krnaa
-25/11/23,11:18,Sahil Sajar,Ye 1 janam ke hai?,Is this 1 birth?
-25/11/23,11:18,Vishal~,🥲,🥲
-25/11/23,11:18,Vishal~,Gaand faaru hai,Gand is Faroo
-25/11/23,11:19,Vishal~,Devops hi cloud computing hota hai kya??,Devops hi cloud computing hota hai kya??
-25/11/23,11:19,Sahil Sajar,Shayad,Shayad
-25/11/23,11:21,Sahil Sajar,Web dev se kch kch cheez co-relate krra,Web dev se kch kch cheez co-relate krra
-25/11/23,11:21,Vishal~,Haa,Haa
-25/11/23,11:22,Vishal~,Cloud aur cyber me ek chiz common hai dono me suru ka portion bahut match kar rha,One thing common between cloud and cyber is that the initial portion is very much matched in both.
-25/11/23,22:01,Sahil Sajar,To final kya decide kiye sb?,To final kya decide kiye sb?
-25/11/23,22:30,Mithalesh,Blockchain ka dekhe,View of Blockchain
-25/11/23,22:31,Mithalesh,Project dekhe... Or implementation hmko utna kuch smjh nhi aaya,See the project... And we didn't understand the implementation much.
-25/11/23,22:31,Sahil Sajar,Haa,Haa
+ReviewID,Username,ReviewText,Likes,TranslatedText
+1,@swaminathan_r1,Life lost. Look at those eyes,0,Life lost. Look at those eyes
+2,@크림-b6m,"You look so professional!, you are so awesome!How did you start to do this?",0,"You look so professional!, you are so awesome! How did you start to do this?"
+3,@lissa17iq90,very cool  bro,0,very cool  bro
+4,@Bruce-Lee.,"I hope when you're 16 and have your own company you'll hire me, because I've signed up for you",0,"I hope when you're 16 and have your own company you'll hire me, because I've signed up for you"
+5,@golden-oj3mk,"I was still reading the question when he finished, and I didn't even understand it.",0,"I was still reading the question when he finished, and I didn't even understand it."
+6,@TU7OV,looks like he just memorized the solution LOL,0,looks like he just memorized the solution LOL
+7,@sathvikspartan,"Hey lad ,  you're a gifted child . keep up the good work ! ",0,"Hey lad ,  you're a gifted child . keep up the good work ! "
+9,@TrungTrinh-vx7vv,NIceeee,0,NIceeee
+10,@volt4692,cool boy,0,cool boy
+11,@dhruvmuhammad,"That is great, keep it up!!!!",0,"That is great, keep it up!!!!"
+12,@onur7192,Asians are smart people tech comes with asia I am Engineer i am amazed what you are doing kid gj,0,Asians are smart people tech comes with asia I am Engineer i am amazed what you are doing kid gj
+13,@Ingoalp,"Im surprised that your writing, great job kid!",0,"Im surprised that your writing, great job kid!"
+14,@paoloanzani,leetcode is scared of this kid,0,leetcode is scared of this kid
+15,@esainlares2111,"You have a future, keep it up ",0,"You have a future, keep it up "
+16,@toddwasson3355,"I've been programming for more than 40 years, have done it professionally in the video game industry for 25.  I've written a DirectX12 engine, several physics engines including seriously multithreaded systems, have seven game titles under my belt for PC, XBox, and Playstation.  You know something, kid?  You did that faster than I could!  Stick with it.  You've got the gift.  You're going to be a serious force to be reckoned with.  ",77,"I've been programming for more than 40 years, have done it professionally in the video game industry for 25.  I've written a DirectX12 engine, several physics engines including seriously multithreaded systems, have seven game titles under my belt for PC, XBox, and Playstation.  You know something, kid?  You did that faster than I could!  Stick with it.  You've got the gift.  You're going to be a serious force to be reckoned with.  "
+17,@swordran,bro im like 15 and ur already way smarter than me in coding ,0,bro im like 15 and ur already way smarter than me in coding 
+18,@craftrumzen2393,That's awesome. I've been hoping some C++ videos from you.,5,That's awesome. I've been hoping some C++ videos from you.
+19,@quangvantran6703,"you will have the very bright future, keep it up. As long as you love it, then your life will become very successful.",0,"you will have the very bright future, keep it up. As long as you love it, then your life will become very successful."
+20,@EVxICY,bro Im shocked by seeing you.. great work buddy keep it up,2,bro Im shocked by seeing you.. great work buddy keep it up
+21,@James_Cook007,"This kid has a bright future, He will be one of the brilliant programmer with his 500 - 600 USD machine. Meanwhile, The gamer with 2,000 USD RTX 5070 machine still brainless. I'm so glad to you and so pround to your parent for the brilliant son like you sir.",18,"This kid has a bright future, He will be one of the brilliant programmer with his 500 - 600 USD machine. Meanwhile, The gamer with 2,000 USD RTX 5070 machine still brainless. I'm so glad to you and so pround to your parent for the brilliant son like you sir."
+22,@VixilGames,haha we got prodigies making content before GTA6 XD,3,haha we got prodigies making content before GTA6 XD
+23,@dragonmene5199,bro u have a good future kepp it that way ... and i hope  you to teach me coding like this please,0,bro u have a good future kepp it that way ... and i hope  you to teach me coding like this please
+24,@suuprx,"tenes futuro en famaf chamigo, un monstro.",1,"You have a future in Famaf Chamigo, a monster."
+25,@javadoctor101,hey.. may I ask what got you into coding?,1,hey.. may I ask what got you into coding?
+26,@abror_developer,wish u the best Im also doing leetcode problems and preparing for Competitive programming,2,wish u the best Im also doing leetcode problems and preparing for Competitive programming
+27,@HopPopi-uo2rd,che animale! madonna! che little alieno!,1,what an animal! Madonna! What a little alien!
+28,@Abunnasar-Programmer,same bro.... i am of 14 year just completed python dsa and ML now moving To DL(deep learning),0,same bro.... i am of 14 year just completed python dsa and ML now moving To DL(deep learning)
+29,@CarsScans,lets develop an app together??,0,lets develop an app together??
+30,@KushagrKumar-n1c,bro looks like leon silicon,1,bro looks like leon silicon
+31,@agbag3350,how did u learn code. i want to try,0,how did u learn code. i want to try
+32,@onlysuhi72,"Subscribed to you, young man. You have a bright future ahead of you. Keep it up! ",11,"Subscribed to you, young man. You have a bright future ahead of you. Keep it up! "
+33,@Electro-k6u,let's go !!,0,let's go !!
+34,@justansfmain3677,ai is losin this one a win for humanity,2,ai is losin this one a win for humanity
+35,@barackyunus901,I will  be rooting for you errday,11,I will  be rooting for you errday
+36,@Ianhaspi,Good job :),3,Good job :)
+37,@asa-eb7to,holly smokes,3,holly smokes
+38,@Moh_media45,Pro html course,2,Pro html course
+39,@dzzlik,"Well done man, can you try the problem called Trippi Troppi",1,"Well done man, can you try the problem called Trippi Troppi"
+40,@robertvaradi1188,xD,0,xD
+41,@bgyt6624,Good job ,0,Good job 
+42,@2427GreeshmanthSamanthula,Bro show dsa python in 40 min video,0,Bro show dsa python in 40 min video
+43,@KKFrancisco,"Que calidad che, que capo chamigo, segui asi maestro.",3,"What a quality che, what a chao chamigo, I continued like this maestro."
+44,@mq-r3apz291,im honestly ssurprised this prodigy doesnt have 100k subscribers. Maybe he's a new youtuber.,15,im honestly ssurprised this prodigy doesnt have 100k subscribers. Maybe he's a new youtuber.
+45,@paulornacio1445,sos la cabra amigazo un saludo desde argentina,0,You are the goat friend Greetings from Argentina
+46,@unknownperson1797,Cool,0,Cool
+47,@SpearOfBlackWings,"there is an extension on vs code called CPH or competitve programming helper , use it for easy testing expereince",0,"there is an extension on vs code called CPH or competitve programming helper , use it for easy testing expereince"
+48,@МихаилРатников-ы9ц,красава,0,Handsome
