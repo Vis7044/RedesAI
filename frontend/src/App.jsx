@@ -22,7 +22,7 @@ import AnalysisPage from "./pages/AnalysisPage";
 
 function App() {
   return (
-    <SmoothScroll>
+   
       <div
       className="App min-h-screen inter-karla"
       style={{
@@ -34,13 +34,13 @@ function App() {
         <Header />
         <ToastContainer />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SmoothScroll><Home /></SmoothScroll>} />
           <Route path="/analyse" element={<AnalysisPage /> } />
-          <Route path="/results" element={<Results />} />
-          <Route path="/features" element={<Feature />} />
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="/results" element={<SmoothScroll><Results /></SmoothScroll>} />
+          <Route path="/features" element={<SmoothScroll><Feature /></SmoothScroll>} />
+          <Route path="/about" element={<SmoothScroll><AboutUs/></SmoothScroll>} />
 
-          <Route path="/contact" element={<Contact></Contact>}></Route>
+          <Route path="/contact" element={<SmoothScroll><Contact/></SmoothScroll>}></Route>
           <Route
             path="/profile"
             element={
@@ -55,7 +55,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-    </SmoothScroll>
+   
   );
 }
 
