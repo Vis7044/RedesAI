@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Chart from '../Chart';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Suggestion from '../components/Suggestion';
+import Summary from '../components/Summary';
 const sentimentColors = {
   positive: 'bg-green-100 text-green-700',
   negative: 'bg-red-100 text-red-700',
@@ -20,7 +21,7 @@ const Results = () => {
 
   const sentiment = JSON.parse(localStorage.getItem('sentiment')) || {};
   const comments = JSON.parse(localStorage.getItem('comments')) || [];
-  const [groupedComments, setGroupedComments] = useState({});   
+  const [groupedComments, setGroupedComments] = useState({});
   const translatedCommentsWithSentiment =
     JSON.parse(localStorage.getItem('translatedCommentsWithSentiment')) || [];
 
@@ -31,13 +32,16 @@ const Results = () => {
   };
 
   console.log(comments, 'comments');
-  console.log(translatedCommentsWithSentiment, 'translatedCommentsWithSentiment');  
+  console.log(
+    translatedCommentsWithSentiment,
+    'translatedCommentsWithSentiment'
+  );
 
   // Group comments by sentiment
- 
-    useEffect(() => {
-      const grouped = { positive: [], negative: [], neutral: [] };
-    translatedCommentsWithSentiment.forEach((item,index) => {
+
+  useEffect(() => {
+    const grouped = { positive: [], negative: [], neutral: [] };
+    translatedCommentsWithSentiment.forEach((item, index) => {
       if (item.sentiment === 'positive') {
         grouped.positive.push(comments[index].ReviewText);
       } else if (item.sentiment === 'negative') {
@@ -48,15 +52,17 @@ const Results = () => {
     });
 
     setGroupedComments(grouped);
+    localStorage.setItem('groupedComments', JSON.stringify(grouped)); // Save to local storage
     console.log(groupedComments);
   }, []);
-
 
   const positive = sentiment.positive || 0;
   const negative = sentiment.negative || 0;
   const neutral = 100.0 - (positive + negative);
 
   const tabs = ['Graphical', 'Comments', 'Suggestions'];
+  const [showSummary, setShowSummary] = useState(true);
+  const [show, setShow] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -68,8 +74,9 @@ const Results = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col item-start items-center lg:flex-row min-h-[60vh] md:justify-center mt-6 gap-4"
+            className="flex flex-col item-start items-center min-h-[60vh] md:justify-center mt-6 gap-4"
           >
+            <div className='flex items-center justify-center gap-5'>
             <div className="flex flex-col gap-3">
               <div className="text-2xl md:text-4xl text-green-400">
                 Positive: {positive.toFixed(1)}%🙂
@@ -86,6 +93,23 @@ const Results = () => {
               negative={negative.toFixed(2)}
               neutral={neutral.toFixed(2)}
             />
+            </div>
+            <div className="mt-4 text-center text-white text-lg font-medium">
+              {positive > 40 ? (
+                <p className="text-green-400">
+                  🎉 Most of the comments are positive! Keep it up!
+                </p>
+              ) : negative > positive ? (
+                <p className="text-red-400">
+                  ⚠️ More negative feedback than positive. Consider addressing
+                  the concerns.
+                </p>
+              ) : (
+                <p className="text-yellow-400">
+                  😐 Feedback is mostly neutral or mixed.
+                </p>
+              )}
+            </div>
           </motion.div>
         );
 
@@ -114,10 +138,12 @@ const Results = () => {
                   className="p-4 mb-4 border border-slate-600 hover:shadow-md transition-all duration-300 ease-in-out hover:shadow-fuchsia-500 rounded-lg"
                 >
                   <p className="text-white text-sm mb-2">
-                    <strong className='text-green-600'>Original:</strong> {comments[index].ReviewText}
+                    <strong className="text-green-600">Original:</strong>{' '}
+                    {comments[index].ReviewText}
                   </p>
                   <p className="text-white italic text-sm mb-3">
-                    <strong className='text-orange-600'>Translated:</strong> {item.text}
+                    <strong className="text-orange-600">Translated:</strong>{' '}
+                    {item.text}
                   </p>
                   <span
                     className={`inline-block px-3 py-1 rounded-full text-xs font-semibold w-fit ${
@@ -129,43 +155,83 @@ const Results = () => {
                 </motion.div>
               ))}
 
-            <div className='flex justify-between items-center mt-4'>  
-            {visibleCount < translatedCommentsWithSentiment.length && (
-              <motion.button
-                onClick={handleShowMore}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className=" text-white rounded-lg"
-              >
-                Show More <IoIosArrowDown className="inline-block ml-2" />
-              </motion.button>
-            )}
-            {visibleCount > 5 && (
-              <motion.button
-                onClick={() => setVisibleCount(5)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white rounded-lg "
-              >
-                Reset <IoIosArrowUp className="inline-block ml-2" />
-              </motion.button>
-            )}
+            <div className="flex justify-between items-center mt-4">
+              {visibleCount < translatedCommentsWithSentiment.length && (
+                <motion.button
+                  onClick={handleShowMore}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className=" text-white rounded-lg"
+                >
+                  Show More <IoIosArrowDown className="inline-block ml-2" />
+                </motion.button>
+              )}
+              {visibleCount > 5 && (
+                <motion.button
+                  onClick={() => setVisibleCount(5)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-white rounded-lg "
+                >
+                  Reset <IoIosArrowUp className="inline-block ml-2" />
+                </motion.button>
+              )}
             </div>
           </motion.div>
         );
 
       case 'Suggestions':
         return (
-          <motion.div
-            key="suggestions"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="text-white text-xl min-h-[70vh] text-center mt-6"
-          >
-            <Suggestion groupedComments={groupedComments}/>
-          </motion.div>
+          <div>
+            <motion.div className="flex justify-around items-center mt-4 mx-10 ">
+              <button
+                onClick={() => {
+                  setShowSummary(true);
+                  setShow(false);
+                }}
+                className={`text-white ${
+                  show === false ? 'bg-green-400' : 'bg-gray-600'
+                } px-2 py-2 rounded-sm`}
+              >
+                Summary
+              </button>
+              <button
+                onClick={() => {
+                  setShowSummary(false);
+                  setShow(true);
+                }}
+                className={`text-white ${
+                  show === true ? 'bg-green-400' : 'bg-gray-600'
+                } px-2 py-2 rounded-sm`}
+              >
+                Suggestion
+              </button>
+            </motion.div>
+            {!showSummary && (
+              <motion.div
+                key="suggestions"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-white text-xl min-h-[70vh] text-center mt-6"
+              >
+                <Suggestion />
+              </motion.div>
+            )}
+            {showSummary && (
+              <motion.div
+                key="summary"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-white text-xl min-h-[70vh] text-center mt-6"
+              >
+                <Summary />
+              </motion.div>
+            )}
+          </div>
         );
 
       default:
