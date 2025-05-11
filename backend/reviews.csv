@@ -1,17 +1,106 @@
-<<<<<<< HEAD
 ReviewID,Username,ReviewText,Likes,TranslatedText
-1,@rajattiwari6184,"lovely, can  we have more videos",0,"lovely, can  we have more videos"
-2,@Rohan-ct3tm,This is soo cool,0,This is soo cool
-3,@GopalKumar-py2cf,hey sanket i can buy your on going backend course will i get any discount ??,1,hey sanket i can buy your on going backend course will i get any discount ??
-4,@centreofmeme,"For the pending order question , can we add something like TTL until the trading is happening once the market is closed so is the order if not executed ?",0,"For the pending order question , can we add something like TTL until the trading is happening once the market is closed so is the order if not executed ?"
-5,@RahulMistry-px2uy,"Amazing Design !! Just a suggestion, i think you should have elaborated more on the watchlist functionality considering the scale at which Zerodha works. 10M Users can have multiple watchlists , how are you going to fanout stock price updates to each user?",1,"Amazing Design !! Just a suggestion, i think you should have elaborated more on the watchlist functionality considering the scale at which Zerodha works. 10M Users can have multiple watchlists , how are you going to fanout stock price updates to each user?"
-6,@SasikumarPallekondaa,"Saket, I like your system design discussion. One thing that I would like to comment is, exchange price gateway using SSE with exchange.  Here you've made an assumption that exchanges support SSE.  What if exchanges do not support, how would you handle",0,"Saket, I like your system design discussion. One thing that I would like to comment is, exchange price gateway using SSE with exchange.  Here you've made an assumption that exchanges support SSE.  What if exchanges do not support, how would you handle"
-7,@Md_sadiq_Md,"Thank you for this series. Btw can you please make a video on Designing youtube dashboard, like how they show real time metrics or like youtube like button how to handle such amount of like. I asked for it because it was recently asked to me in an Interview",1,"Thank you for this series. Btw can you please make a video on Designing youtube dashboard, like how they show real time metrics or like youtube like button how to handle such amount of like. I asked for it because it was recently asked to me in an Interview"
-8,@Htyagi1998,"This is like an ideal scenerio where interviewer is not asking much questions and is silient, but in real time, we will say 2 3 sentence and in those 2 3 sentence there will be 10 questions.But it's good knowledge, can you also comeup with AI or ML based system design interview?",0,"This is like an ideal scenerio where interviewer is not asking much questions and is silient, but in real time, we will say 2 3 sentence and in those 2 3 sentence there will be 10 questions. But it's good knowledge, can you also comeup with AI or ML based system design interview?"
-9,@GokulP-n7f,"Hi Sir, I’ve registered for the Spring Boot Backend course. The Discord link I received via email is showing as invalid. Could you please add me to the server or provide a new invite link?",0,"Hi Sir, I’ve registered for the Spring Boot Backend course. The Discord link I received via email is showing as invalid. Could you please add me to the server or provide a new invite link?"
-10,@wholesomekid,sir will we get certificate after course completion that can be attached to linkedin profile?,0,sir will we get certificate after course completion that can be attached to linkedin profile?
-11,@soumyajitmandal3503,In backend development course coupon code is not working.,0,In backend development course coupon code is not working.
-12,@DreddyAnni,"Appreciate the detailed breakdown! A bit off-topic, but I wanted to ask: My OKX wallet holds some USDT, and I have the seed phrase. (air carpet target dish off jeans toilet sweet piano spoil fruit essay). Could you explain how to move them to Binance?",0,"Appreciate the detailed breakdown! A bit off-topic, but I wanted to ask: My OKX wallet holds some USDT, and I have the seed phrase. (air carpet target dish off jeans toilet sweet piano spoil fruit essay). Could you explain how to move them to Binance?"
-13,@_vetrivel25,Hi Sanket what will be the start date of this course. Please can you start it as soon as possible,3,Hi Sanket what will be the start date of this course. Please can you start it as soon as possible
-=======
->>>>>>> e387ffdfdff888837207e820a9e9a09629b068a8
+1,@divyagarg7674,Apply in Hexaware Done,0,Apply in Hexaware Done
+2,@InspiretoGrowth,All,0,All
+3,@Anshukumar-tf6bt,All link,0,All link
+4,@nareshlucky7713,capgemini and wipro(wilp)links send me sir,0,capgemini and wipro(wilp)links send me sir
+5,@AshishShelar-t8f,Wipro link plz,0,Wipro link please
+6,@AnkitaHazra-v9j,All link,0,All link
+7,@HimanshuKumar-sp2hb,All link,0,All link
+8,@HimanshuKumar-sp2hb,Tcs link,0,Tcs link
+9,@anuragtanwar2473,hexaware  link,0,hexaware  link
+10,@FaizanRaza-qz7io,Share Link plz in description or coment?wipro,0,Share Link plz in description or coment?wipro
+11,@dwaynejohnsons2394,All links,0,All links
+12,@king-uf1wu,Capgemini,0,Capgemini
+13,@king-uf1wu,All,0,All
+14,@Fitness87-z,Capgemini,0,Capgemini
+15,@king-uf1wu,Links,0,Links
+16,@nikitayadav4374,All Link,0,All Link
+17,@keshav1554,Hexaware,0,Hexaware
+18,@aryapillai6899,All links,0,All links
+19,@prashantkatiya8073,Wipro link please,0,Wipro link please
+20,@arpitpolei7983,Wipro link,0,Wipro link
+21,@rahamtulla2532,Apply links kahan pr hai bhai,2,"Where is the application link, brother?"
+22,@Scizzor1802,All link please,1,All link please
+23,@madhweshjahagirdar7093,Capgemini link??,0,Capgemini link??
+24,@YugMisalkar,All link plz,0,All link plz
+25,@EjazAhmad0927,2023 pass out ke liye kuch h,0,Kuch H for 2023 Pass Out
+26,@manishachanda8089,Hexaware link pls,2,Hexaware link pls
+27,@Yaduvanshiupendra123,Plxx give links of  Capgemini Wipro,0,Plxx give links of  Capgemini Wipro
+28,@shriyashpandey3045,all,0,all
+29,@vijaydhakane838,All,0,All
+30,@Murlidhar-y9f,sir hexaware link,0,sir hexaware link
+31,@shadowmarkds7958,link,0,link
+32,@subhammukherjee201,can a btech 2025 student apply for tcs ignite?,0,can a btech 2025 student apply for tcs ignite?
+33,@tanushree2402,Sir hexaware company link,0,Sir hexaware company link
+34,@dikshaadmuthe03,All link,0,All link
+35,@alkkumar7771,all link,0,all link
+36,@khushigupta1978,Capgemini link,0,Capgemini link
+37,@movies6329,all links,0,all links
+38,@movies6329,tcs link,0,tcs link
+39,@swapnadeepdas912,Sir please have python coding lessons also.,0,Sir please have python coding lessons also.
+40,@harshvardhan-d5e,none of the opportunity u mentioned is for 2026 btech batch right ??,0,none of the opportunity u mentioned is for 2026 btech batch right ??
+41,@PrashansitBTECH_CSE_DataScienc,Sir i haven't received my TCS admit card???,1,Sir i haven't received my TCS admit card???
+42,@SunnyPawar-t1j,Wipro link,0,Wipro link
+43,@namratasaha2003,"Sir it's an urgent request .I have already applied for Wipro WILP. After receiving the LOI, I haven't received any further mail regarding document submission, and the deadline has passed. It's been two months since I received the LOI . What should I do? Should I reapply? ( please tell me what to do )",0,"Sir it's an urgent request . I have already applied for Wipro WILP. After receiving the LOI, I haven't received any further mail regarding document submission, and the deadline has passed. It's been two months since I received the LOI . What should I do? Should I reapply? ( please tell me what to do )"
+44,@GW_song_edite,All link,0,All link
+45,@sameer-b01,Sir jinhone 14 feb ko tcs ka exam diya tha unka nahi hua to kya vo dubara nahi bhar skte tcs vala form?,0,"Sir, those who had given TC on 14th Feb, if it did not happen, then can't they fill the TC form again?"
+46,@Creativemind1531,Capgemini link,0,Capgemini link
+47,@4802channel,Hexaware Link,0,Hexaware Link
+48,@roshankewat2073,All links,0,All links
+49,@j42-shrutipotdar2,All link,0,All link
+50,@DeepakKumarSingh-kd8kg,where is link sir ?,0,where is link sir ?
+51,@nivrithac6475,All Links sir,0,All Links sir
+52,@KapilSinghal-m8m,TCS ki hiring ka result kab tak aayega,1,When will the TC hiring result come?
+53,@PihuDas-bg6ed,Hexaware link,0,Hexaware link
+54,@shivuveerkumar,Hexaware,0,Hexaware
+55,@subhadeepdutta7532,Sir Nqt results date & Cognizant Genc interview update,0,Sir Nqt results date & Cognizant Genc interview update
+56,@pratikkumar2004,ALL,0,ALL
+57,@g-37ajaykhandagale97,wipro sir,0,wipro sir
+58,@rchoudhary8866,Wipro link,0,Wipro link
+59,@shrushtimane-u3t,All link sir,0,All link sir
+60,@akshatyadav01,All,0,All
+61,@Death_Rider__,All,0,All
+62,@nishugupta1001,hexaware link,0,hexaware link
+63,@surutimangal776,All link,0,All link
+64,@supratickdutta4812,all links,0,all links
+65,@devanshydv6904,All link,0,All link
+66,@RahulMishra-eg3kd,Perfect update,0,Perfect update
+67,@tiktaktrendy106,TCS NQT ka result kab hai?,1,When is the TC Nakt Result?
+68,@rajveersinghsadhra7720,all link,0,all link
+69,@shreyachaurasia6337,wipro,0,wipro
+70,@zaynperwez,"Sir in previous tcs , I selected for smart hiring 2025 but due to 5th sem I didn't allow for giving interview.But in review after 10 days I passed that paper.And also again smart hiring comes , But apply option doesn't show.So what is the next step either for that interview or again I have to apply.Please reply sir 🤍",1,"Sir in previous tcs , I selected for smart hiring 2025 but due to 5th sem I didn't allow for giving interview. But in review after 10 days I passed that paper. And also again smart hiring comes , But apply option doesn't show. So what is the next step either for that interview or again I have to apply. Please reply sir 🤍"
+71,@princekushwaha4603,link please,0,link please
+72,@apekshasaxena5854,All link,0,All link
+73,@rummanswalheen5800,ALL LINKS,0,ALL LINKS
+74,@Gaming360-m5l,hexaware ka 3 saal ka bond,0,A 3-year bond of hexavir
+75,@SMCYBPRO726,ALL Link,0,ALL Link
+76,@SMCYBPRO726,tcs Link,0,tcs Link
+77,@shagunkumar1179,Sir information btate link bhi description ma dal diye kro students ko dikkat na ho,0,Sir information btate link bhi description ma dal diye kro students ko dikkat na ho
+78,@TheTradingHub1,Wipro & hexaware,1,Wipro & hexaware
+79,@k51vaibhavraktate98,Wipro link,0,Wipro link
+80,@92_yuvrajpandey49,tcs nqt ka admit card abhi tak nhi aaya,0,tcs nqt ka admit card abhi tak nhi aaya
+81,@owaisnoorie4700,Wipro and hexaware link please,0,Wipro and hexaware link please
+82,@ayanghosh9436,all link,0,all link
+83,@dattashankarkumar1800,All link,0,All link
+84,@snehajha5332,Capegemini and Wipro,0,Capegemini and Wipro
+85,@AbhiiiSpires,Is btech 24 graduate eligible here??,0,Is btech 24 graduate eligible here??
+86,@HardikKhandelwal-m7g,ALL,0,ALL
+87,@PayalZanjurne,All link please,0,All link please
+88,@PrashantSingh-tf5km,wipro and hexaware link,0,wipro and hexaware link
+89,@rishimajumder3859,Are link to de do bhai,0,Are link to de do bhai
+90,@kunjbhawsar3315,Haxaware  & Wipro link,1,Haxaware  & Wipro link
+91,@kunjbhawsar3315,All links,0,All links
+92,@rajshekhar9134,"Sir, hexaware link",0,"Sir, hexaware link"
+93,@shrutigupta4731,All link,0,All link
+94,@TurboGamingOfficial15,"wipro, hexaware apply link",0,"wipro, hexaware apply link"
+95,@Aditya-zy1gr,Links wipro,0,Links wipro
+96,@ptiri5g,sir nqt ka result kab ayega,0,"Sir, when will the result of the problem come?"
+97,@Sree_2808,All link,0,All link
+98,@siddharthtamboli1420,All link,0,All link
+99,@Kishankumarsingh123,Link,0,Link
+100,@AbhishekSharma-r9o,Hexaware link,0,Hexaware link
+101,@imyouraman,All,0,All
+102,@AbhishekSharma-r9o,All link,0,All link
+103,@iankitgupta,tcs capgemini and wipro link,0,tcs capgemini and wipro link
+104,@VikasVerma-oo7fx,All link,0,All link
+105,@Chidambarckulkarni,Link please,0,Link please
