@@ -1,81 +1,103 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-const Suggestion = ({groupedComments}) => {
-    const [suggestion, setSuggestion] = useState(null);   
-    const generatePrompt = (comments) => {
-        return `
-      YouTube Comment Sentiment Breakdown:
-      
-      Positive:
-      ${comments.positive.map(c => `- ${c}`).join("\n")}
-      
-      Negative:
-      ${comments.negative.map(c => `- ${c}`).join("\n")}
-      
-      Neutral:
-      ${comments.neutral.map(c => `- ${c}`).join("\n")}
-      
-      Your task:
-      Give one helpful suggestion for each category: positive, negative, and neutral.
-      
-      Respond in the following JSON format (strictly no extra text):
-      {
-        "positive": "Your suggestion here",
-        "negative": "Your suggestion here",
-        "neutral": "Your suggestion here"
+const Suggestion = () => {
+  const [suggestion, setSuggestion] = useState(
+    localStorage.getItem('suggestion') ? JSON.parse(localStorage.getItem('suggestion')) : null
+  );
+  const [groupedComments, setGroupedComments] = useState(
+    localStorage.getItem('groupedComments') ? JSON.parse(localStorage.getItem('groupedComments')) : {}
+  );
+
+  const generatePrompt = (comments) => {
+    return `
+    YouTube Comment Sentiment Breakdown:
+    
+    Positive:
+    ${comments.positive.map((c) => `- ${c}`).join('\n')}
+    
+    Negative:
+    ${comments.negative.map((c) => `- ${c}`).join('\n')}
+    
+    Neutral:
+    ${comments.neutral.map((c) => `- ${c}`).join('\n')}
+    
+    Your task:
+    Give one suggestion for the youtuber to improve according to each category: positive, negative, and neutral.
+    
+    Respond in the following JSON format (strictly no extra text):
+    {
+      "positive": "Your suggestion here",
+      "negative": "Your suggestion here",
+      "neutral": "Your suggestion here"
+    }
+    
+    Keep your total word count under 500. Respond with only the JSON object, nothing else.
+    `;
+  };
+
+  const prompt = generatePrompt(groupedComments);
+
+  useEffect(() => {
+    const fetchSuggestion = async () => {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL_NODE}/api/video/suggestion`,
+          { prompt }
+        );
+        const data = response.data;
+        setSuggestion(data);
+        localStorage.setItem('suggestion', JSON.stringify(data));
+      } catch (error) {
+        console.error('Error fetching suggestion:', error);
       }
-      
-      Keep your total word count under 200. Respond with only the JSON object, nothing else.
-        `;
-      };
-      
-      
-      const prompt = generatePrompt(groupedComments);
+    };
 
-      useEffect(() => {
-        const fetchSuggestion = async () => {
-          try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL_NODE}/api/video/suggestion`, {prompt});
-            const data = response.data;
-            setSuggestion(data);
-          } catch (error) {
-            console.error('Error fetching suggestion:', error);
-          }
-        };
-        fetchSuggestion();
-      },[])
+    if (!suggestion) {
+      fetchSuggestion();
+    }
+  }, []);
 
-      console.log(suggestion, 'suggestion');    
   return (
+    <div className="w-full max-w-4xl mx-auto px-4">
+      <h2 className="text-2xl font-bold text-center text-white mb-6">✨ An AI Suggestions for you to improve</h2>
 
-    <div>
-      {suggestion && (
-        <div className="flex flex-col gap-2 mt-4">
-          <h2 className="text-lg font-bold">Suggestions</h2>
-          <div className="flex flex-col gap-2">
-            <div className="bg-green-100 text-green-700 p-4 rounded-md">
-              <strong>Positive:</strong> {suggestion.suggestion.positive}
+      {suggestion ? (
+        <div className="flex flex-col gap-6">
+          {/* Positive Suggestion */}
+          <div className="p-6 bg-green-50 border-l-4 border-green-500 rounded-xl shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">😊</span>
+              <h3 className="text-lg font-semibold text-green-800">Positive Suggestion</h3>
             </div>
-            <div className="bg-red-100 text-red-700 p-4 rounded-md">
-              <strong>Negative:</strong> {suggestion.suggestion.negative}
+            <p className="text-green-700">{suggestion.suggestion.positive}</p>
+          </div>
+
+          {/* Negative Suggestion */}
+          <div className="p-6 bg-red-50 border-l-4 border-red-500 rounded-xl shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">😞</span>
+              <h3 className="text-lg font-semibold text-red-800">Negative Suggestion</h3>
             </div>
-            <div className="bg-yellow-100 text-yellow-700 p-4 rounded-md">
-              <strong>Neutral:</strong> {suggestion.suggestion.neutral}
+            <p className="text-red-700">{suggestion.suggestion.negative}</p>
+          </div>
+
+          {/* Neutral Suggestion */}
+          <div className="p-6 bg-yellow-50 border-l-4 border-yellow-500 rounded-xl shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">😐</span>
+              <h3 className="text-lg font-semibold text-yellow-800">Neutral Suggestion</h3>
             </div>
+            <p className="text-yellow-700">{suggestion.suggestion.neutral}</p>
           </div>
         </div>
-      )}
-      {!suggestion && (
-        <div className="flex flex-col gap-2 mt-4">
-          <h2 className="text-lg font-bold">Suggestions</h2>
-          <div className="bg-gray-100 text-gray-700 p-4 rounded-md">
-            Loading suggestions...
-          </div>
+      ) : (
+        <div className="p-6 bg-gray-100 rounded-xl shadow-md text-center text-gray-700">
+          ⏳ Loading suggestions...
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Suggestion
+export default Suggestion;
