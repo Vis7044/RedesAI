@@ -1,10 +1,9 @@
 // nodeBackend/controllers/resultController.js
 const Result = require("../models/resultModel");
 const User = require("../models/userModel");
-const { GoogleGenAI } = require('@google/genai');
-const dotenv = require('dotenv');
+const { GoogleGenAI } = require("@google/genai");
+const dotenv = require("dotenv");
 dotenv.config();
-
 
 // exports.getResult=async(req,res)=>{
 //     try {
@@ -23,30 +22,47 @@ dotenv.config();
 exports.addResult = async (req, res) => {
   try {
     const { videoId, videoName, resultStatus } = req.body;
+    console.log("Video details");
+    console.log(videoId, "Video Name: ", videoName, "vide res", resultStatus);
+
     if (!videoId || !videoName || !resultStatus) {
       return res.status(400).json({
+        success: false,
         message: "Please provide videoId, videoName and resultStatus",
       });
     }
-    const result = new Result({
-      videoId,
-      videoName,
-      resultStatus,
-    });
-    await result.save();
-    const video = await Result.findOne({ videoId });
-    if (!video) {
-      return res.status(404).json({ message: "Result not found" });
+
+    // Check if result with videoId already exists
+    let result = await Result.findOne({ videoId });
+
+    if (result) {
+      // Update existing result
+      result.videoName = videoName;
+      result.resultStatus = resultStatus;
+      await result.save();
+    } else {
+      // Create new result
+      result = new Result({ videoId, videoName, resultStatus });
+      await result.save();
     }
+
+    // Link result to user
     const user = await User.findById(req.userId);
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     }
-    user.result.push(video._id);
-    await user.save();
-    return res.status(201).json({
+
+    if (!user.result.includes(result._id)) {
+      user.result.push(result._id);
+      await user.save();
+    }
+
+    return res.status(200).json({
+      success: true,
       message: "Result added successfully",
-      video,
+      video: result,
     });
   } catch (error) {
     console.error(error);
@@ -124,32 +140,34 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-
 exports.suggestion = async (req, res) => {
   const { prompt } = req.body;
 
   try {
     const config = {
       temperature: 1.1,
-      responseMimeType: 'application/json', // Keep text/plain
+      responseMimeType: "application/json", // Keep text/plain
     };
 
     const contents = [
       {
-        role: 'user',
+        role: "user",
         parts: [{ text: prompt }],
       },
     ];
 
-    const model = 'gemini-2.0-flash';
-    const response = await ai.models.generateContent({ model, config, contents });
+    const model = "gemini-2.0-flash";
+    const response = await ai.models.generateContent({
+      model,
+      config,
+      contents,
+    });
 
     const generatedText = response.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (!generatedText) {
-      throw new Error('No suggestion generated');
+      throw new Error("No suggestion generated");
     }
-
 
     // Try parsing the text as JSON
     const suggestion = JSON.parse(generatedText);
@@ -157,7 +175,6 @@ exports.suggestion = async (req, res) => {
     res.status(200).json({ suggestion });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to generate suggestion' });
+    res.status(500).json({ error: "Failed to generate suggestion" });
   }
 };
-
