@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -9,18 +9,20 @@ import HashLoader from "react-spinners/HashLoader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
+import { UserContext } from "../context/UserContextProvider";
 
 const YoutubeSection = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
 
+  const {user} = useContext(UserContext); 
+
+ 
   const [url, setUrl] = useState("");
-  const [videoId, setVideoId] = useState(null);
   const [comments, setComments] = useState([]);
   const [sentiment, setSentiment] = useState(null);
   const [error, setError] = useState(null);
   const [prevUrl, setPrevUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(0);
   const [videoData, setVideoData] = useState({
     title: "",
     thumbnail: "",
@@ -32,6 +34,7 @@ const YoutubeSection = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const fetchVideoData = async () => {
+    setLoading(true)
     console.log("this url", url);
     const id = url.split("v=")[1]?.split("&")[0];
     if (!id) {
@@ -59,10 +62,12 @@ const YoutubeSection = () => {
         });
         handleFetchComments(video.snippet.title);
       } else {
+        setLoading(false)
         console.log("No video found with the given ID.");
         setError("No video found with the given ID.");
       }
     } catch (error) {
+      setLoading(false)
       console.error("Error fetching video details:", error);
       setError("Failed to fetch video data.");
     }
@@ -74,7 +79,6 @@ const YoutubeSection = () => {
       return;
     }
 
-    setLoading(true);
 
     try {
       const response = await axios.post(`${apiUrl}/comments`, {
@@ -93,18 +97,19 @@ const YoutubeSection = () => {
           JSON.stringify(sentimentResponse.data.sentiment_totals)
         );
         console.log(videoData);
-        const checkRes = await axiosInstance.post("/video/addResult", {
-          videoId: url,
-          videoName,
-          resultStatus: sentimentResponse.data.sentiment_totals,
-        });
-        console.log("this: ", checkRes);
-        console.log(sentimentResponse.data.sentiment_totals);
+        if(user) {
+          const checkRes = await axiosInstance.post("/video/addResult", {
+            videoId: url,
+            videoName,
+            resultStatus: sentimentResponse.data.sentiment_totals,
+          });
+        }
+
         localStorage.setItem(
           "translatedCommentsWithSentiment",
           JSON.stringify(sentimentResponse.data.results)
         );
-        console.log(sentimentResponse.data.results);
+        
         localStorage.setItem(
           "comments",
           JSON.stringify(response.data.comments)
@@ -188,6 +193,7 @@ const YoutubeSection = () => {
                   type="submit"
                   onClick={fetchVideoData}
                   className={`px-2 py-2 rounded-md text-white transition-all duration-300 bg-indigo-600 hover:bg-red-600"
+
                   }`}
                 >
                   Analyze Now
