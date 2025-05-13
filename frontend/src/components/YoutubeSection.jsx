@@ -35,11 +35,17 @@ const YoutubeSection = () => {
 
   const fetchVideoData = async () => {
     setLoading(true)
+    if (!url) {
+      setError("Youtube URL is required.");
+      setLoading(false)
+      return;
+    }
     console.log("this url", url);
     const id = url.split("v=")[1]?.split("&")[0];
     if (!id) {
       console.log("inside");
       setError("Video ID is required.");
+      setLoading(false);
       return;
     }
 
@@ -61,6 +67,7 @@ const YoutubeSection = () => {
           comments: video.statistics.commentCount,
         });
         handleFetchComments(video.snippet.title);
+        setError(null);
       } else {
         setLoading(false)
         console.log("No video found with the given ID.");
@@ -179,6 +186,9 @@ const YoutubeSection = () => {
               <label className="block text-sm mb-1">
                 Paste the YouTube video URL
               </label>
+              {error && (
+                <p className="text-red-500 text-sm mb-2"> {error} </p>
+              )}
               <input
                 type="url"
                 value={url}
@@ -192,14 +202,15 @@ const YoutubeSection = () => {
                 <button
                   type="submit"
                   onClick={fetchVideoData}
-                  className={`px-2 py-2 rounded-md text-white transition-all duration-300 bg-indigo-600 hover:bg-red-600"
-
+                  disabled={url === prevUrl}
+                  className={`px-2 py-2 rounded-xl text-white transition-all duration-300 ${
+                    url === prevUrl ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-red-600'
                   }`}
                 >
                   Analyze Now
                 </button>
               )}
-              {loading && (
+              {loading && !error && (
                 <HashLoader size={30} color="#fff" loading={loading} />
               )}
             </div>
@@ -212,8 +223,12 @@ const YoutubeSection = () => {
               >
                 See Results →
               </Link>
+            )}           
+
+            {!error && (
+              <TextLoader loading={loading} />
             )}
-            <TextLoader loading={loading} />
+            
           </div>
         </div>
 
