@@ -25,7 +25,7 @@ const Favorites = ({ logs, onStar }) => {
       <div className="overflow-x-auto rounded-xl">
         <table className="w-full table-auto text-left border-collapse text-sm sm:text-base">
           <thead className="bg-gradient-to-r from-purple-900/60 to-gray-800 text-purple-300">
-            <tr>
+            <tr className="text-center no-wrap">
               <th className="p-4">Video Name</th>
               <th className="p-4">👍 Positive</th>
               <th className="p-4">👎 Negative</th>
@@ -44,31 +44,31 @@ const Favorites = ({ logs, onStar }) => {
                   transition={{ duration: 0.2 }}
                   className="border-b border-gray-700 hover:bg-gray-800 transition"
                 >
-                  <td className="p-4 font-medium text-white">
+                  <td className="p-4 font-medium text-white w-64">
                     {log.videoName}
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 text-center">
                     <span
                       className={`px-3 py-1 rounded-lg text-xs font-semibold ${sentimentColors.Positive}`}
                     >
-                      {log.resultStatus.positive}%
+                      {log.resultStatus.positive.toFixed(2)}%
                     </span>
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 text-center">
                     <span
                       className={`px-3 py-1 rounded-lg text-xs font-semibold ${sentimentColors.Negative}`}
                     >
-                      {log.resultStatus.negative}%
+                      {log.resultStatus.negative.toFixed(2)}%
                     </span>
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 text-center">
                     <span
                       className={`px-3 py-1 rounded-lg text-xs font-semibold ${sentimentColors.Neutral}`}
                     >
-                      {log.resultStatus.neutral}%
+                      {log.resultStatus.neutral.toFixed(2)}%
                     </span>
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 text-center">
                     <button
                       onClick={() => onStar(log._id)}
                       className="text-red-400 hover:text-red-300 hover:scale-110 transition"

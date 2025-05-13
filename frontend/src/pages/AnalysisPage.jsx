@@ -34,16 +34,7 @@ const AnalysisPage = () => {
         >
           YouTube
         </button>
-        <button
-          onClick={() => setActiveTab("twitter")}
-          className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
-            activeTab === "twitter"
-              ? "bg-cyan-500 text-black border-cyan-400 shadow-md"
-              : "bg-gray-900 text-gray-300 border-gray-700 hover:bg-gray-800 hover:text-white"
-          }`}
-        >
-          Twitter
-        </button>
+        
         <button
           onClick={() => setActiveTab("whatsapp")}
           className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
@@ -53,6 +44,17 @@ const AnalysisPage = () => {
           }`}
         >
           WhatsApp
+        </button>
+
+        <button
+          onClick={() => setActiveTab("twitter")}
+          className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${
+            activeTab === "twitter"
+              ? "bg-cyan-500 text-black border-cyan-400 shadow-md"
+              : "bg-gray-900 text-gray-300 border-gray-700 hover:bg-gray-800 hover:text-white"
+          }`}
+        >
+          Twitter
         </button>
       </div>
 
